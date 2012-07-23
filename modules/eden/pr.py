@@ -649,6 +649,7 @@ class S3PersonModel(S3Model):
                                    widget = S3DateWidget(past=1320,  # Months, so 110 years
                                                          future=0)),
                              pr_age_group(label = T("Age group")),
+                             Field("home_address", "text", label = T("Home Address")),
                              Field("nationality",
                                    requires = IS_NULL_OR(IS_IN_SET_LAZY(
                                                 lambda: gis.get_countries(key_type="code"),

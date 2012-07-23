@@ -162,22 +162,25 @@ def index():
 
     # Menu Boxes
     menu_btns = [#div, label, app, function
-                ["facility", SHELTERS, "cr", "shelter"],
-                ["facility", T("Warehouses"), "inv", "warehouse"],
-                ["facility", T("Hospitals"), "hms", "hospital"],
-                ["facility", T("Offices"), "org", "office"],
+                #["facility", SHELTERS, "cr", "shelter"],
+                #["facility", T("Warehouses"), "inv", "warehouse"],
+                #["facility", T("Hospitals"), "hms", "hospital"],
+                #["facility", T("Offices"), "org", "office"],
                 ["sit", T("Incidents"), "irs", "ireport"],
-                ["sit", T("Assessments"), "survey", "series"],
+                #["sit", T("Assessments"), "survey", "series"],
+                ["sit", T("Victimes"), "dvr", "case"],
                 ["sit", T("Assets"), "asset", "asset"],
-                ["sit", T("Inventory Items"), "inv", "inv_item"],
+                #["sit", T("Inventory Items"), "inv", "inv_item"],
                 #["dec", T("Gap Map"), "project", "gap_map"],
                 #["dec", T("Gap Report"), "project", "gap_report"],
-                ["dec", T("Requests"), "req", "req"],
-                ["res", T("Projects"), "project", "project"],
-                ["res", T("Activities"), "project", "activity"],
-                ["res", T("Commitments"), "req", "commit"],
-                ["res", T("Sent Shipments"), "inv", "send"],
-                ["res", T("Received Shipments"), "inv", "recv"]
+                ["res", T("Requests"), "req", "req"],
+                ["res", T("Staff & Volunteers"), "hrm", "index"],
+                ["res", T("Map"), "gis", "index"],
+                #["res", T("Projects"), "project", "project"],
+                #["res", T("Activities"), "project", "activity"],
+                #["res", T("Commitments"), "req", "commit"],
+                #["res", T("Sent Shipments"), "inv", "send"],
+                #["res", T("Received Shipments"), "inv", "recv"]
                 ]
 
     # Change to (Mitigation)/Preparedness/Response/Recovery?
@@ -185,7 +188,7 @@ def index():
                                  _id = "facility_box", _class = "menu_box"),
                  "sit": DIV( H3(T("Situation")),
                               _id = "menu_div_sit", _class = "menu_div"),
-                 "dec": DIV( H3(T("Decision")),
+                 "dec": DIV( H3(T("")),
                               _id = "menu_div_dec", _class = "menu_div"),
                  "res": DIV( H3(T("Response")),
                               _id = "menu_div_res", _class = "menu_div"),
@@ -204,8 +207,12 @@ def index():
     div_arrow = DIV(IMG(_src = "/%s/static/img/arrow_blue_right.png" % \
                                request.application),
                           _class = "div_arrow")
+    div_arro = DIV(IMG(_src = "/%s/static/img/civile.png" % \
+                               request.application),
+                          _class = "div_arro")
     sit_dec_res_box = DIV(menu_divs["sit"],
                           div_arrow,
+                          #div_arro,
                           menu_divs["dec"],
                           div_arrow,
                           menu_divs["res"],

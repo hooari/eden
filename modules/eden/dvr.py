@@ -58,10 +58,10 @@ class S3DVRModel(S3Model):
         # Case
         #
         dvr_damage_opts = {
-            1: T("Very High"),
-            2: T("High"),
-            3: T("Medium"),
-            4: T("Low"),
+            1: T("Affected"),
+            2: T("Injured"),
+            3: T("Dead"),
+            4: T("Missing"),
         }
 
         dvr_status_opts = {
@@ -79,19 +79,27 @@ class S3DVRModel(S3Model):
                                             requires=IS_ADD_PERSON_WIDGET(),
                                             comment=None
                                             ),
-                                  location_id(label = T("Home Address")),
+                                  location_id(label = T("Location")),
                                   Field("damage", "integer",
                                         requires = IS_NULL_OR(IS_IN_SET(dvr_damage_opts)),
                                         represent = lambda opt: dvr_damage_opts.get(opt, NONE),
                                         label= T("Damage Assessment")),
+                                  Field("reporter",
+                                        #readable = False,
+                                        #writable = False,
+                                        label = T("Reporter Name")),
                                   Field("insurance", "boolean",
+                                        readable = False,
+                                        writable = False,
                                         label = T("Insurance")),
                                   Field("status", "integer",
+                                        readable = False,
+                                        writable = False,
                                         default = 1,
                                         requires = IS_NULL_OR(IS_IN_SET(dvr_status_opts)),
                                         represent = lambda opt: dvr_status_opts.get(opt, NONE),
                                         label= T("Status")),
-                                  multi_activity_id(),
+                                  #multi_activity_id(),
                                   s3.comments(),
                                   *s3.meta_fields())
 

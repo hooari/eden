@@ -21,7 +21,7 @@ def index():
 
 
 # -----------------------------------------------------------------------------
-@auth.s3_requires_membership(1)
+#@auth.s3_requires_membership(1)
 def icategory():
 
     """

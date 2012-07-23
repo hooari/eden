@@ -248,8 +248,8 @@ class S3IRSModel(S3Model):
                                        irs_incident_type_opts.get(opt, opt)),
                              # Better to use a plain text field than to clutter the PR
                              Field("person",
-                                   readable = False,
-                                   writable = False,
+                                   #readable = False,
+                                   #writable = False,
                                    label = T("Reporter Name"),
                                    comment = (T("At/Visited Location (not virtual)"))),
                              Field("contact",
@@ -264,8 +264,8 @@ class S3IRSModel(S3Model):
                                    requires = [IS_NOT_EMPTY(),
                                                IS_UTC_DATETIME(allow_future=False)]),
                              Field("expiry", "datetime",
-                                   #readable = False,
-                                   #writable = False,
+                                   readable = False,
+                                   writable = False,
                                    label = T("Expiry Date/Time"),
                                    widget = S3DateTimeWidget(past=0),
                                    represent = lambda val: datetime_represent(val, utc=True),
@@ -427,8 +427,9 @@ class S3IRSModel(S3Model):
                                  "affected",
                                  "dead",
                                  "injured",
-                                 "verified",
+                                 #"verified",
                                  "message",
+				 #"comments"
                                 ])
 
         # Components
@@ -1067,14 +1068,14 @@ def irs_rheader(r, tabs=[]):
         settings = current.deployment_settings
 
         tabs = [(T("Report Details"), None),
-                (T("Photos"), "image"),
-                (T("Documents"), "document"),
-                (T("Vehicles"), "vehicle"),
-                (T("Staff"), "human_resource"),
-                (T("Tasks"), "task"),
+                #(T("Photos"), "image"),
+                #(T("Documents"), "document"),
+                #(T("Vehicles"), "vehicle"),
+                #(T("Staff"), "human_resource"),
+                #(T("Tasks"), "task"),
                ]
-        if settings.has_module("msg"):
-            tabs.append((T("Dispatch"), "dispatch"))
+        #if settings.has_module("msg"):
+        #    tabs.append((T("Dispatch"), "dispatch"))
 
         rheader_tabs = s3_rheader_tabs(r, tabs)
 

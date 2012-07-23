@@ -426,12 +426,16 @@ class S3OptionsMenu:
                         M("New", m="create"),
                         M("List All"),
                         M("Search", m="search"),
-                        M("Import", m="import", p="create"),
-                        M("Report", m="report",
-                          vars=dict(rows="item_id$item_category_id",
-                                    cols="L1",
-                                    fact="number",
-                                    aggregate="count")),
+                        #M("Import", m="import", p="create"),
+                        #M("Report", m="report",
+                        # vars=dict(rows="item_id$item_category_id",
+                        #            cols="L1",
+                        #            fact="number",
+                        #            aggregate="count")),
+                    ),
+                    M("Vehicles", c="vehicle", f="vehicle")(
+                        M("New", m="create"),
+                        M("List All"),
                     ),
                     M("Items", f="item")(
                         M("New", m="create"),
@@ -982,22 +986,22 @@ class S3OptionsMenu:
                     M("Incident Reports", f="ireport")(
                         M("New", m="create"),
                         M("List All"),
-                        M("Open Incidents", vars={"open":1}),
-                        M("Timeline", args="timeline"),
-                        M("Import", m="import"),
+                        #M("Open Incidents", vars={"open":1}),
+                        #M("Timeline", args="timeline"),
+                        #M("Import", m="import"),
                         M("Search", m="search"),
-                        M("Report", m="report",
-                          vars=dict(rows="L1",
-                                    cols="category",
-                                    fact="datetime",
-                                    aggregate="count"))
+                        #M("Report", m="report",
+                          #vars=dict(rows="L1",
+                                    #cols="category",
+                                    #fact="datetime",
+                                    #aggregate="count"))
                     ),
-                    M("Incident Categories", f="icategory", restrict=[ADMIN])(
+                    M("Incident Categories", f="icategory")(
                         M("New", m="create"),
                         M("List All"),
                     ),
-                    M("Ushahidi " + T("Import"), f="ireport", restrict=[ADMIN],
-                      args="ushahidi")
+                    #M("Ushahidi " + T("Import"), f="ireport", restrict=[ADMIN],
+                    #  args="ushahidi")
                 )
 
     # -------------------------------------------------------------------------

@@ -12,7 +12,7 @@
 """
 
 # Remind admin to edit this file
-FINISHED_EDITING_CONFIG_FILE = False # change to True after you finish editing this file
+#FINISHED_EDITING_CONFIG_FILE = False # change to True after you finish editing this file
 
 # Database settings
 deployment_settings.database.db_type = "sqlite"
@@ -98,7 +98,7 @@ deployment_settings.base.migrate = True
 # ["roles", "user"]
 # Unless doing a manual DB migration, where prepopulate = 0
 # In Production, prepopulate = 0 (to save 1x DAL hit every page)
-deployment_settings.base.prepopulate = ["RGIMS"]
+deployment_settings.base.prepopulate = ["default"]
 
 # Set this to True to use Content Delivery Networks to speed up Internet-facing sites
 deployment_settings.base.cdn = False
@@ -108,7 +108,7 @@ deployment_settings.base.cdn = False
 # JS Debug messages are also available in the Console
 # can also load an individual page in debug mode by appending URL with
 # ?debug=1
-deployment_settings.base.debug = False
+deployment_settings.base.debug = True
 
 # Email settings
 # Outbound server
