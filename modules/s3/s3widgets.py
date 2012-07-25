@@ -2381,12 +2381,14 @@ class S3AddPersonWidget(FormWidget):
         # Embedded Form
         ptable = s3db.pr_person
         ctable = s3db.pr_contact
-        fields = [ptable.first_name,
+        fields = [ptable.num_carte,
+                  ptable.first_name,
                   #ptable.middle_name,
                   ptable.last_name,
 				  ptable.home_address,
 				  ptable.nationality,
                   ptable.date_of_birth,
+				  ptable.age_group,
                   ptable.gender]
 
         if request.controller == "hrm":
@@ -2399,16 +2401,16 @@ class S3AddPersonWidget(FormWidget):
         else:
             validator = IS_NULL_OR(IS_EMAIL())
 
-        fields.extend([Field("email",
-							 #readable = False,
-                             #writable = False,
-                             notnull=emailRequired,
-                             requires=validator,
-                             label=T("Email Address")),
-                       Field("mobile_phone",
-                             #readable = False,
-                             #writable = False,
-                             label=T("Mobile Phone Number"))])
+        #fields.extend([Field("email",
+    	#					  #readable = False,
+        #                     #writable = False,
+        #                     notnull=emailRequired,
+        #                     #requires=validator,
+        #                     label=T("Email Address")),
+        #               Field("mobile_phone",
+        #                     #readable = False,
+        #                     #writable = False,
+        #                     label=T("Mobile Phone Number"))])
 
         labels, required = s3_mark_required(fields)
         if required:

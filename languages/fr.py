@@ -17,6 +17,7 @@
 '%(msg)s\nIf the request type is "%(type)s", please enter the %(type)s on the next screen.': '%(msg)s\nSi le type de demande est "%(type)s", entrez le %(type)s sur l\'écran suivant.',
 '%(system_name)s - Verify Email': '%(system_name)s - vérifiez par courrier électronique',
 '%.1f km': '%.1f km',
+'%H:%M:%S': '%H:%M:%S',
 '%Y-%m-%d': '%Y-%m-%d',
 '%Y-%m-%d %H:%M:%S': '%Y-%m-%d %H:%M:%S',
 '%m-%d-%Y': '%m-%d-%Y',

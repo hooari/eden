@@ -1359,9 +1359,10 @@ class IS_ADD_PERSON_WIDGET(Validator):
                     person = ptable[person_id]
 
                     # Add contact information as provided
-                    ctable.insert(pe_id=person.pe_id,
-                                  contact_method="EMAIL",
-                                  value=_vars.email)
+                    if _vars.email:
+                        ctable.insert(pe_id=person.pe_id,
+                                      contact_method="EMAIL",
+                                      value=_vars.email)
                     if _vars.mobile_phone:
                         ctable.insert(pe_id=person.pe_id,
                                       contact_method="SMS",
