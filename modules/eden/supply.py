@@ -88,6 +88,7 @@ class S3SupplyModel(S3Model):
         organisation_represent = self.org_organisation_represent
 
         NONE = current.messages.NONE
+        datetime_represent = S3DateTime.datetime_represent
 
         # Shortcuts
         add_component = self.add_component
@@ -205,10 +206,12 @@ class S3SupplyModel(S3Model):
         #
         tablename = "supply_item_category"
         table = define_table(tablename,
-                             catalog_id(),
+                             #catalog_id(),
                              #Field("level", "integer"),
                              Field("parent_item_category_id",
                                    "reference supply_item_category",
+                                   readable=False,
+                                   writable=False,
                                    label = T("Parent"),
                                    ondelete = "RESTRICT"),
                              Field("code", length=16,
@@ -219,14 +222,18 @@ class S3SupplyModel(S3Model):
                                    label = T("Name")
                                    ),
                              Field("can_be_asset", "boolean",
+                                   readable=False,
+                                   writable=False,
                                    default=True,
-                                   readable=settings.has_module("asset"),
-                                   writable=settings.has_module("asset"),
+                                   #readable=settings.has_module("asset"),
+                                   #writable=settings.has_module("asset"),
                                    label=T("Items in Category can be Assets")),
                              Field("is_vehicle", "boolean",
+                                   readable=False,
+                                   writable=False,
                                    default=False,
-                                   readable=settings.has_module("vehicle"),
-                                   writable=settings.has_module("vehicle"),
+                                   #readable=settings.has_module("vehicle"),
+                                   #writable=settings.has_module("vehicle"),
                                    label=T("Items in Category are Vehicles")),
                              comments(),
                              *meta_fields())
@@ -308,7 +315,9 @@ class S3SupplyModel(S3Model):
                              Field("um",
                                    length=128,
                                    label = T("Unit of Measure"),
-                                   notnull=True,
+                                   readable=False,
+                                   writable=False,
+                                   #notnull=True,
                                    default = "piece"),
                              # Needed to auto-create a catalog_item
                              item_category_id("item_category_id",
@@ -323,38 +332,69 @@ class S3SupplyModel(S3Model):
                                                     )
                                                    )
                                                ),
-                             brand_id(),
+                             #brand_id(),
+                             #location_id(),
+                             Field("datetime", "datetime",
+                                   #default = request.utcnow,
+                                   label = T("Date/Time of Arival"),
+                                   widget = S3DateTimeWidget(future=0),
+                                   represent = lambda val: datetime_represent(val, utc=True),
+                                   requires = IS_NULL_OR(IS_UTC_DATETIME()),
+								  ),
+                             Field("engage", "datetime",
+                                   #readable = False,
+                                   #writable = False,
+                                   label = T("Date/Time of Engagement"),
+                                   widget = S3DateTimeWidget(),
+                                   represent = lambda val: datetime_represent(val, utc=True),
+                                   requires = IS_NULL_OR(IS_UTC_DATETIME()),
+                                  ),
+                             Field("disengage", "datetime",
+                                   #default = request.utcnow,
+                                   label = T("Date/Time of Disengagement"),
+                                   widget = S3DateTimeWidget(),
+                                   represent = lambda val: datetime_represent(val, utc=True),
+                                   requires = IS_NULL_OR(IS_UTC_DATETIME()),
+                                  ),
                              Field("kit", "boolean",
+                                   readable=False,
+                                   writable=False,
                                    default=False,
                                    label=T("Kit?")),
                              Field("model",
                                    label = T("Model/Type"),
                                    length=128),
-                             Field("year",
-                                   "integer",
+                             Field("year", "integer",
+                                   readable=False,
+                                   writable=False,
                                    label = T("Year of Manufacture")),
-                             Field("weight",
-                                   "double",
+                             Field("weight", "double",
+                                   readable=False,
+                                   writable=False,
                                    label = T("Weight (kg)"),
                                    represent = lambda v, row=None: IS_FLOAT_AMOUNT.represent(v, precision=2)
                                    ),
-                             Field("length",
-                                   "double",
+                             Field("length", "double",
+                                   readable=False,
+                                   writable=False,
                                    label = T("Length (m)"),
                                    represent = lambda v, row=None: IS_FLOAT_AMOUNT.represent(v, precision=2)
                                    ),
-                             Field("width",
-                                   "double",
+                             Field("width", "double",
+                                   readable=False,
+                                   writable=False,
                                    label = T("Width (m)"),
                                    represent = lambda v, row=None: IS_FLOAT_AMOUNT.represent(v, precision=2)
                                    ),
-                             Field("height",
-                                   "double",
+                             Field("height", "double", 
+                                   readable=False,
+                                   writable=False,
                                    label = T("Height (m)"),
                                    represent = lambda v, row=None: IS_FLOAT_AMOUNT.represent(v, precision=2)
                                    ),
-                             Field("volume",
-                                   "double",
+                             Field("volume", "double",
+                                   readable=False,
+                                   writable=False,
                                    label = T("Volume (m3)"),
                                    represent = lambda v, row=None: IS_FLOAT_AMOUNT.represent(v, precision=2)
                                    ),
@@ -415,8 +455,8 @@ class S3SupplyModel(S3Model):
                                               label=ADD_ITEM,
                                               title=T("Item"),
                                               tooltip=T("Type the name of an existing catalog item OR Click 'Add New Item' to add an item which is not in the catalog.")),
-                    ondelete = "RESTRICT")
-
+                    #ondelete = "RESTRICT")
+                                         )
         # ---------------------------------------------------------------------
         # Item Search Method
         #
@@ -431,22 +471,22 @@ class S3SupplyModel(S3Model):
                                #"item_category_id$name",
                                "comments" ]
                       ),
-                      S3SearchOptionsWidget(
-                        name="item_search_brand",
-                        label=T("Brand"),
-                        comment=T("Search for an item by brand."),
-                        field="brand_id",
-                        represent ="%(name)s",
-                        cols = 3
-                      ),
-                      S3SearchOptionsWidget(
-                        name="item_search_year",
-                        label=T("Year"),
-                        comment=T("Search for an item by Year of Manufacture."),
-                        field="year",
+                      #S3SearchOptionsWidget(
+                      #  name="item_search_brand",
+                      #  label=T("Brand"),
+                      #  comment=T("Search for an item by brand."),
+                      #  field="brand_id",
+                      #  represent ="%(name)s",
+                      #  cols = 3
+                      #),
+                      #S3SearchOptionsWidget(
+                      #  name="item_search_year",
+                      #  label=T("Year"),
+                      #  comment=T("Search for an item by Year of Manufacture."),
+                      #  field="year",
                         #represent ="%(name)s",
-                        cols = 1
-                      ),
+                     #   cols = 1
+                     # ),
             )
         )
 
@@ -1311,11 +1351,11 @@ def supply_item_rheader(r):
 
             tabs = [
                     (T("Edit Details"), None),
-                    (T("Packs"), "item_pack"),
-                    (T("Alternative Items"), "item_alt"),
-                    (T("In Inventories"), "inv_item"),
-                    (T("Requested"), "req_item"),
-                    (T("In Catalogs"), "catalog_item"),
+                    #(T("Packs"), "item_pack"),
+                    #(T("Alternative Items"), "item_alt"),
+                    #(T("In Inventories"), "inv_item"),
+                    #(T("Requested"), "req_item"),
+                    #(T("In Catalogs"), "catalog_item"),
                    ]
 
             if item.kit == True:
@@ -1327,9 +1367,9 @@ def supply_item_rheader(r):
             rheader = DIV(TABLE(TR( TH("%s: " % table.name.label),
                                     item.name,
                                   ),
-                                TR( TH("%s: " % table.brand_id.label),
-                                    table.brand_id.represent(item.brand_id),
-                                  ),
+                                #TR( TH("%s: " % table.brand_id.label),
+                                #    table.brand_id.represent(item.brand_id),
+                                #  ),
                                 TR( TH("%s: " % table.model.label),
                                     item.model or NONE,
                                   ),

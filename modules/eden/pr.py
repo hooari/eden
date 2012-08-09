@@ -606,13 +606,14 @@ class S3PersonModel(S3Model):
                                    readable=False,
                                    writable=False,
                                    default=False),
+							 Field("num_carte", label = T("N° piece d'identité")),
                              Field("first_name",
-                                   notnull=True,
+                                   #notnull=True,
                                    default = "?" if current.auth.permission.format != "html" else "",
                                    length=64, # Mayon Compatibility
                                    # NB Not possible to have an IS_NAME() validator here
                                    # http://eden.sahanafoundation.org/ticket/834
-                                   requires = IS_NOT_EMPTY(error_message = T("Please enter a first name")),
+                                   #requires = IS_NOT_EMPTY(error_message = T("Please enter a first name")),
                                    comment =  DIV(_class="tooltip",
                                                   _title="%s|%s" % (T("First name"),
                                                                     T("The first or only name of the person (mandatory)."))),

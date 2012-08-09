@@ -422,22 +422,22 @@ class S3OptionsMenu:
         """ ASSET Controller """
 
         return M(c="asset")(
-                    M("Assets", f="asset")(
-                        M("New", m="create"),
-                        M("List All"),
-                        M("Search", m="search"),
+                    #M("Assets", f="asset")(
+                    #    M("New", m="create"),
+                    #    M("List All"),
+                    #    M("Search", m="search"),
                         #M("Import", m="import", p="create"),
                         #M("Report", m="report",
                         # vars=dict(rows="item_id$item_category_id",
                         #            cols="L1",
                         #            fact="number",
                         #            aggregate="count")),
-                    ),
-                    M("Vehicles", c="vehicle", f="vehicle")(
-                        M("New", m="create"),
-                        M("List All"),
-                    ),
-                    M("Items", f="item")(
+                    #),
+                    #M("Vehicles", c="vehicle", f="vehicle")(
+                    #    M("New", m="create"),
+                    #    M("List All"),
+                    #),
+                    M("Items", c="supply", f="item")(
                         M("New", m="create"),
                         M("List All"),
                     ),
@@ -910,40 +910,40 @@ class S3OptionsMenu:
 
         return M()(
                     #M("Home", f="index"),
-                    M("Warehouses", c="inv", f="warehouse")(
-                        M("New", m="create"),
-                        M("List All"),
-                        M("Search", m="search"),
-                        M("Import", m="import", p="create"),
-                    ),
-                    M("Warehouse Stock", c="inv", f="inv_item")(
-                        M("Search Warehouse Stock", f="inv_item", m="search"),
-                        M("Adjust Stock Levels", f="adj"),
-                        M("Report", f="inv_item", m="report",
-                          vars=Storage(rows="item_id",
-                                       cols="site_id",
-                                       fact="quantity",
-                                       aggregate="sum")),
-                        M("Import", f="inv_item", m="import", p="create"),
-                    ),
-                    M("Reports", c="inv", f="inv_item")(
-                        M("Monetization", c="inv", f="inv_item", vars=dict(report="mon")),
-                        M("Summary of Releases", c="inv", f="inv_item", vars=dict(report="rel")),
-                        M("Summary of Incoming Supplies", c="inv", f="inv_item", vars=dict(report="inc")),
-                    ),
-                    M(inv_recv_list, c="inv", f="recv")(
-                        M("New", m="create"),
-                        M("List All"),
-                        M(inv_recv_search, m="search"),
-                    ),
-                    M("Sent Shipments", c="inv", f="send")(
-                        M("New", m="create"),
-                        M("List All"),
-                    ),
+                    #M("Warehouses", c="inv", f="warehouse")(
+                    #    M("New", m="create"),
+                    #    M("List All"),
+                    #    M("Search", m="search"),
+                    #    M("Import", m="import", p="create"),
+                    #),
+                    #M("Warehouse Stock", c="inv", f="inv_item")(
+                    #    M("Search Warehouse Stock", f="inv_item", m="search"),
+                    #    M("Adjust Stock Levels", f="adj"),
+                    #    M("Report", f="inv_item", m="report",
+                    #      vars=Storage(rows="item_id",
+                    #                   cols="site_id",
+                    #                   fact="quantity",
+                    #                   aggregate="sum")),
+                    #    M("Import", f="inv_item", m="import", p="create"),
+                    #),
+                    #M("Reports", c="inv", f="inv_item")(
+                    #    M("Monetization", c="inv", f="inv_item", vars=dict(report="mon")),
+                    #    M("Summary of Releases", c="inv", f="inv_item", vars=dict(report="rel")),
+                    #    M("Summary of Incoming Supplies", c="inv", f="inv_item", vars=dict(report="inc")),
+                    #),
+                    #M(inv_recv_list, c="inv", f="recv")(
+                    #    M("New", m="create"),
+                    #    M("List All"),
+                    #    M(inv_recv_search, m="search"),
+                    #),
+                    #M("Sent Shipments", c="inv", f="send")(
+                    #    M("New", m="create"),
+                    #    M("List All"),
+                    #),
                     M("Items", c="supply", f="item")(
                         M("New", m="create"),
                         M("List All"),
-                        M("Search", f="catalog_item", m="search"),
+                        M("Search", f="item", m="search"),
                     ),
                     # Catalog Items moved to be next to the Item Categories
                     #M("Catalog Items", c="supply", f="catalog_item")(
@@ -951,26 +951,26 @@ class S3OptionsMenu:
                        #M("List All"),
                        #M("Search", m="search"),
                     #),
-                    M("Catalogs", c="supply", f="catalog")(
-                        M("New", m="create"),
-                        M("List All"),
-                        #M("Search", m="search"),
-                    ),
+                    #M("Catalogs", c="supply", f="catalog")(
+                    #    M("New", m="create"),
+                    #    M("List All"),
+                    #    #M("Search", m="search"),
+                    #),
                     M("Item Categories", c="supply", f="item_category",
                       restrict=[ADMIN])(
                         M("New Item Category", m="create"),
                         M("List All"),
                     ),
-                    M("Requests", c="req", f="req")(
-                        M("New", m="create"),
-                        M("List All"),
-                        M("List All Requested Items", f="req_item"),
-                        M("List All Requested Skills", f="req_skill"),
-                        #M("Search Requested Items", f="req_item", m="search"),
-                    ),
-                    M("Commitments", c="req", f="commit")(
-                        M("List All")
-                    ),
+                    #M("Requests", c="req", f="req")(
+                    #    M("New", m="create"),
+                    #    M("List All"),
+                    #    M("List All Requested Items", f="req_item"),
+                    #    M("List All Requested Skills", f="req_skill"),
+                    #    #M("Search Requested Items", f="req_item", m="search"),
+                    #),
+                    #M("Commitments", c="req", f="commit")(
+                    #    M("List All")
+                    #),
                 )
 
     # -------------------------------------------------------------------------

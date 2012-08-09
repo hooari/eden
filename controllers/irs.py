@@ -65,10 +65,10 @@ def ireport():
             s3db.gis_location.level.requires = IS_NULL_OR(IS_IN_SET(
                                                 gis.get_all_current_levels()))
         elif r.interactive or r.representation == "aadata":
-            if r.method == "update":
-                table.dispatch.writable = True
-                table.verified.writable = True
-                table.closed.writable = True
+            #if r.method == "update":
+            #    table.dispatch.writable = True
+            #    table.verified.writable = True
+            #    table.closed.writable = True
             if r.component:
                 if r.component_name == "image":
                     itable = s3db.doc_image

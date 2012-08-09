@@ -73,7 +73,10 @@ class S3DVRModel(S3Model):
         tablename = "dvr_case"
         table = self.define_table(tablename,
                                   # @ToDo: Option to autogenerate these, like Waybills, et al
-                                  Field("reference", label = T("Case Number")),
+                                  Field("reference",
+                                        notnull=True,
+                                        label = T("Case Number")
+                                       ),
                                   person_id(widget=S3AddPersonWidget(controller="pr"),
                                             # @ToDo: Modify this to update location_id if the selected person has a Home Address already
                                             requires=IS_ADD_PERSON_WIDGET(),
