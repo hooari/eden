@@ -2402,7 +2402,11 @@ class S3AddPersonWidget(FormWidget):
             validator = IS_NULL_OR(IS_EMAIL())
 
         #fields.extend([Field("email",
+#<<<<<<< HEAD
     	#					 #readable = False,
+#=======
+    	#					  #readable = False,
+#>>>>>>> ef70dcf7fcfaaada1a55acacafbf3f326437d093
         #                     #writable = False,
         #                     notnull=emailRequired,
         #                     #requires=validator,
