@@ -89,6 +89,8 @@ class S3SupplyModel(S3Model):
 
         NONE = current.messages.NONE
         datetime_represent = S3DateTime.datetime_represent
+        messages = current.messages
+        UNKNOWN_OPT = messages.UNKNOWN_OPT
 
         # Shortcuts
         add_component = self.add_component
@@ -98,7 +100,56 @@ class S3SupplyModel(S3Model):
         define_table = self.define_table
         meta_fields = s3.meta_fields
         super_link = self.super_link
-
+        wilayas = {
+            1:T("Adrar"),
+            2:T("Chlef"),
+            3:T("Laghouat"),
+            4:T("Oum ElBouaghi"),
+            5:T("Batna"),
+            6:T("Bejaia"),
+            7:T("Biskra"),
+            8:T("Bechar"),
+            9:T("Blida"),
+            10:T("Bouira"),
+            11:T("Tamenrasset"),
+            12:T("Tebessa"),
+            13:T("Tlemcen"),
+            14:T("Tiaret"),
+            15:T("Tizi Ouzou"),
+            16:T("Alger"),
+            17:T("Djelfa"),
+            18:T("Jijel"),
+            19:T("Setif"),
+            20:T("Saida"),
+            21:T("Skikda"),
+            22:T("Sidi Bel Abbes"),
+            23:T("Annaba"),
+            24:T("Ghelma"),
+            25:T("Constantine"),
+            26:T("Medea"),
+            27:T("Mostaghanem"),
+            28:T("M'sila"),
+            29:T("Mascara"),
+            30:T("Ouargla"),
+            31:T("Oran"),
+            32:T("El Beyedh"),
+            33:T("Illizi"),
+            34:T("Bordj Bou Arreridj"),
+            35:T("Boumerdes"),
+            36:T("El Taref"),
+            37:T("Tindouf"),
+            38:T("Tessemssilt"),
+            39:T("El Oued"),
+            40:T("Khenchela"),
+            41:T("Souk Ahrass"),
+            42:T("Tipaza"),
+            43:T("Mila"),
+            44:T("Ain Defla"),
+            45:T("Naama"),
+            46:T("Ain Temouchent"),
+            47:T("Ghardaia"),
+            48:T("Relizane"),
+        }
         # =====================================================================
         # Brand
         #
@@ -305,6 +356,12 @@ class S3SupplyModel(S3Model):
         #
         tablename = "supply_item"
         table = define_table(tablename,
+                             Field("wilaya", "integer",
+                                   requires = IS_IN_SET(wilayas, zero=None),
+                                   default = 1,
+                                   label = T("Original Province"),
+                                   represent = lambda opt: \
+                                               wilayas.get(opt, UNKNOWN_OPT)),           
                              Field("name",
                                    required = True,
                                    label = T("Name"),

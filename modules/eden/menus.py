@@ -75,6 +75,9 @@ class S3MainMenu:
                 _module = all_modules[module]
                 if (_module.module_type == module_type):
                     if not _module.access:
+                        if module_type == 3:
+						    menu_modules.append(MM(_module.name_nice, c=module, f="group"))	
+						    break
                         menu_modules.append(MM(_module.name_nice, c=module, f="index"))
                     else:
                         authorised = False
@@ -400,20 +403,20 @@ class S3OptionsMenu:
                         M("List All"),
                         #M("Search", m="search"),
                     ),
-                    M("Impact Assessments", f="assess")(
-                        #M("New", m="create"),
-                        M("New", f="basic_assess", p="create"),
-                        M("List All"),
-                        M("Mobile", f="mobile_basic_assess"),
-                        #M("Search", m="search"),
-                    ),
-                    #M("Baseline Data")(
-                        #M("Population", f="population"),
+                    #M("Impact Assessments", f="assess")(
+                    #    #M("New", m="create"),
+                    #    M("New", f="basic_assess", p="create"),
+                    #    M("List All"),
+                    #    M("Mobile", f="mobile_basic_assess"),
+                    #    #M("Search", m="search"),
                     #),
-                    M("Edit Options", restrict=ADMIN)(
-                        M("List / Add Baseline Types", f="baseline_type"),
-                        M("List / Add Impact Types", f="impact_type"),
-                    )
+                    ##M("Baseline Data")(
+                    #    #M("Population", f="population"),
+                    ##),
+                    #M("Edit Options", restrict=ADMIN)(
+                    #    M("List / Add Baseline Types", f="baseline_type"),
+                    #    M("List / Add Impact Types", f="impact_type"),
+                    #)
                 )
 
 
@@ -816,84 +819,84 @@ class S3OptionsMenu:
         show_vols = lambda i: settings.get_hrm_show_vols()
 
         return M(c="hrm")(
-                    M("Staff", f="staff",
-                      check=[manager_mode, show_staff])(
-                        M("New Staff Member", m="create"),
-                        M("List All"),
-                        M("Search", m="search"),
-                        M("Report", m="report",
-                          vars=Storage(rows="course",
-                                       cols="L1",
-                                       fact="person_id",
-                                       aggregate="count")),
-                        M("Report Expiring Contracts",
-                          vars=dict(expiring=1)),
-                        M("Import", f="person", m="import",
-                          vars={"group":"staff"}, p="create"),
-                    ),
-                    M("Volunteers", f="volunteer",
-                      check=[manager_mode, show_vols])(
-                        M("New Volunteer", m="create"),
-                        M("List All"),
-                        M("Search", m="search"),
-                        M("Report", m="report",
-                          vars=Storage(rows="course",
-                                       cols="L1",
-                                       fact="person_id",
-                                       aggregate="count")),
-                        M("Import", f="person", m="import",
-                          vars={"group":"volunteer"}, p="create"),
-                    ),
+                    #M("Staff", f="staff",
+                    #  check=[manager_mode, show_staff])(
+                    #    M("New Staff Member", m="create"),
+                    #    M("List All"),
+                    #    M("Search", m="search"),
+                    #    M("Report", m="report",
+                    #      vars=Storage(rows="course",
+                    #                   cols="L1",
+                    #                   fact="person_id",
+                    #                   aggregate="count")),
+                    #    M("Report Expiring Contracts",
+                    #      vars=dict(expiring=1)),
+                    #    M("Import", f="person", m="import",
+                    #      vars={"group":"staff"}, p="create"),
+                    #),
+                    #M("Volunteers", f="volunteer",
+                    #  check=[manager_mode, show_vols])(
+                    #    M("New Volunteer", m="create"),
+                    #    M("List All"),
+                    #    M("Search", m="search"),
+                    #    M("Report", m="report",
+                    #      vars=Storage(rows="course",
+                    #                   cols="L1",
+                    #                   fact="person_id",
+                    #                   aggregate="count")),
+                    #    M("Import", f="person", m="import",
+                    #      vars={"group":"volunteer"}, p="create"),
+                    #),
                     M("Teams", f="group",
                       check=manager_mode)(
                         M("New Team", m="create"),
                         M("List All"),
                     ),
-                    M("Job Role Catalog", f="job_role",
-                      check=manager_mode)(
-                        M("New Job Role", m="create"),
-                        M("List All"),
-                    ),
-                    M("Skill Catalog", f="skill",
-                      check=manager_mode)(
-                        M("New Skill", m="create"),
-                        M("List All"),
+                    #M("Job Role Catalog", f="job_role",
+                    #  check=manager_mode)(
+                    #    M("New Job Role", m="create"),
+                    #    M("List All"),
+                    #),
+                    #M("Skill Catalog", f="skill",
+                    #  check=manager_mode)(
+                    #    M("New Skill", m="create"),
+                    #    M("List All"),
                         #M("Skill Provisions", f="skill_provision"),
-                    ),
-                    M("Training Events", f="training_event",
-                      check=manager_mode)(
-                        M("New Training Event", m="create"),
-                        M("List All Training Events"),
-                        M("Search Training Events", m="search"),
-                        M("Search Training Participants", f="training",
-                          m="search"),
-                        M("Training Report", f="training", m="report",
-                          vars=dict(rows="training_event_id$course_id",
-                                    cols="month",
-                                    fact="person_id",
-                                    aggregate="count")),
-                        M("Import Participant List", f="training", m="import"),
-                    ),
-                    M("Training Course Catalog", f="course",
-                      check=manager_mode)(
-                        M("New Training Course", m="create"),
-                        M("List All"),
-                        #M("Course Certificates", f="course_certificate"),
-                    ),
-                    M("Certificate Catalog", f="certificate",
-                      check=manager_mode)(
-                        M("New Certificate", m="create"),
-                        M("List All"),
-                        #M("Skill Equivalence", f="certificate_skill"),
-                    ),
-                    M("Profile", f="person",
-                      check=personal_mode, vars=dict(mode="personal")),
-                    # This provides the link to switch to the manager mode:
-                    M("Human Resources", f="index",
-                      check=[personal_mode, is_org_admin]),
-                    # This provides the link to switch to the personal mode:
-                    M("Personal Profile", f="person",
-                      check=manager_mode, vars=dict(mode="personal"))
+                    #),
+                    #M("Training Events", f="training_event",
+                    #  check=manager_mode)(
+                    #    M("New Training Event", m="create"),
+                    #    M("List All Training Events"),
+                    #    M("Search Training Events", m="search"),
+                    #    M("Search Training Participants", f="training",
+                    #      m="search"),
+                    #    M("Training Report", f="training", m="report",
+                    #      vars=dict(rows="training_event_id$course_id",
+                    #                cols="month",
+                    #                fact="person_id",
+                    #                aggregate="count")),
+                    #    M("Import Participant List", f="training", m="import"),
+                    #),
+                    #M("Training Course Catalog", f="course",
+                    #  check=manager_mode)(
+                    #    M("New Training Course", m="create"),
+                    #    M("List All"),
+                    #    #M("Course Certificates", f="course_certificate"),
+                    #),
+                    #M("Certificate Catalog", f="certificate",
+                    #  check=manager_mode)(
+                    #    M("New Certificate", m="create"),
+                    #    M("List All"),
+                    #    #M("Skill Equivalence", f="certificate_skill"),
+                    #),
+                    #M("Profile", f="person",
+                    #  check=personal_mode, vars=dict(mode="personal")),
+                    ## This provides the link to switch to the manager mode:
+                    #M("Human Resources", f="index",
+                    #  check=[personal_mode, is_org_admin]),
+                    ## This provides the link to switch to the personal mode:
+                    #M("Personal Profile", f="person",
+                    #  check=manager_mode, vars=dict(mode="personal"))
                 )
 
     # -------------------------------------------------------------------------

@@ -319,6 +319,8 @@ class S3IRSModel(S3Model):
                                    represent = lambda closed: \
                                          (T("No"),
                                           T("Yes"))[closed == True]),
+                             Field("reporter",
+                                   label = T("Reporter Name")),
                              s3.comments(),
                              *(s3.lx_fields() + meta_fields()))
         # CRUD strings

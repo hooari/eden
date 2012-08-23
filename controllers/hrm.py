@@ -987,7 +987,7 @@ def group():
             # Team should be contacted either via the Leader or
             # simply by sending a message to the group as a whole.
             #(T("Contact Data"), "contact"),
-            (T("Members"), "group_membership")
+            #(T("Members"), "group_membership")
             ]
 
     output = s3_rest_controller("pr", resourcename,

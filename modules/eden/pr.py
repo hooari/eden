@@ -905,6 +905,7 @@ class S3GroupModel(S3Model):
         messages = current.messages
         NONE = messages.NONE
         UNKNOWN_OPT = messages.UNKNOWN_OPT
+        datetime_represent = S3DateTime.datetime_represent
 
         comments = s3.comments
         configure = self.configure
@@ -915,6 +916,56 @@ class S3GroupModel(S3Model):
         # ---------------------------------------------------------------------
         # Group
         #
+        wilayas = {
+            1:T("Adrar"),
+            2:T("Chlef"),
+            3:T("Laghouat"),
+            4:T("Oum ElBouaghi"),
+            5:T("Batna"),
+            6:T("Bejaia"),
+            7:T("Biskra"),
+            8:T("Bechar"),
+            9:T("Blida"),
+            10:T("Bouira"),
+            11:T("Tamenrasset"),
+            12:T("Tebessa"),
+            13:T("Tlemcen"),
+            14:T("Tiaret"),
+            15:T("Tizi Ouzou"),
+            16:T("Alger"),
+            17:T("Djelfa"),
+            18:T("Jijel"),
+            19:T("Setif"),
+            20:T("Saida"),
+            21:T("Skikda"),
+            22:T("Sidi Bel Abbes"),
+            23:T("Annaba"),
+            24:T("Ghelma"),
+            25:T("Constantine"),
+            26:T("Medea"),
+            27:T("Mostaghanem"),
+            28:T("M'sila"),
+            29:T("Mascara"),
+            30:T("Ouargla"),
+            31:T("Oran"),
+            32:T("El Beyedh"),
+            33:T("Illizi"),
+            34:T("Bordj Bou Arreridj"),
+            35:T("Boumerdes"),
+            36:T("El Taref"),
+            37:T("Tindouf"),
+            38:T("Tessemssilt"),
+            39:T("El Oued"),
+            40:T("Khenchela"),
+            41:T("Souk Ahrass"),
+            42:T("Tipaza"),
+            43:T("Mila"),
+            44:T("Ain Defla"),
+            45:T("Naama"),
+            46:T("Ain Temouchent"),
+            47:T("Ghardaia"),
+            48:T("Relizane"),
+        }
         pr_group_types = {
             1:T("Family"),
             2:T("Tourist Group"),
@@ -932,6 +983,34 @@ class S3GroupModel(S3Model):
                                    label = T("Group Type"),
                                    represent = lambda opt: \
                                                pr_group_types.get(opt, UNKNOWN_OPT)),
+                             Field("wilayas", "integer",
+                                   requires = IS_IN_SET(wilayas, zero=None),
+                                   default = 1,
+                                   label = T("Original Province"),
+                                   represent = lambda opt: \
+                                               wilayas.get(opt, UNKNOWN_OPT)),
+                             Field("datetime", "datetime",
+                                   #default = request.utcnow,
+                                   label = T("Date/Time of Arival"),
+                                   widget = S3DateTimeWidget(future=0),
+                                   represent = lambda val: datetime_represent(val, utc=True),
+                                   requires = IS_NULL_OR(IS_UTC_DATETIME()),
+								  ),
+                             Field("engage", "datetime",
+                                   #readable = False,
+                                   #writable = False,
+                                   label = T("Date/Time of Engagement"),
+                                   widget = S3DateTimeWidget(),
+                                   represent = lambda val: datetime_represent(val, utc=True),
+                                   requires = IS_NULL_OR(IS_UTC_DATETIME()),
+                                  ),
+                             Field("disengage", "datetime",
+                                   #default = request.utcnow,
+                                   label = T("Date/Time of Disengagement"),
+                                   widget = S3DateTimeWidget(),
+                                   represent = lambda val: datetime_represent(val, utc=True),
+                                   requires = IS_NULL_OR(IS_UTC_DATETIME()),
+                                  ),
                              Field("system", "boolean",
                                    default=False,
                                    readable=False,
@@ -939,15 +1018,43 @@ class S3GroupModel(S3Model):
                              Field("name",
                                    label=T("Group Name"),
                                    requires = IS_NOT_EMPTY()),
+                             Field("officers", "integer",
+                                   label=T("Number of Officers"),
+                                   represent = lambda val: val or T("unknown"),
+                                   ),
+                             Field("sousofficers", "integer",
+                                   label=T("Number of Sous-Officer"),
+                                   represent = lambda val: val or T("unknown"),
+                                   ),
+                             Field("agents", "integer",
+                                   label=T("Number of Agents"),
+                                   represent = lambda val: val or T("unknown"),
+                                   ),
+                             Field("Doctors", "integer",
+                                   label=T("Number of Doctors"),
+                                   represent = lambda val: val or T("unknown"),
+                                   ),
+                             Field("Socials", "integer",
+                                   label=T("Number of Social Assistants"),
+                                   represent = lambda val: val or T("unknown"),
+                                   ),
+                             Field("asssets",
+                                   label=T("Specific Assets")),
                              Field("description",
-                                   label=T("Group Description")),
+                                   label=T("Team Description")),
+                             Field("reporter",
+                                   label = T("Reporter Name")),
                              comments(),
                              *meta_fields())
 
         # Field configuration
         table.description.comment = DIV(DIV(_class="tooltip",
-                                            _title="%s|%s" % (T("Group description"),
+                                            _title="%s|%s" % (T("Team Description"),
                                                               T("A brief description of the group (optional)"))))
+        table.asssets.comment = DIV(DIV(_class="tooltip",
+                                            _title="%s|%s" % (T("Specific assets"),
+                                                              T("A brief description if there are any specific assets"))))
+
 
         # CRUD Strings
         ADD_GROUP = T("Add Group")
@@ -992,7 +1099,14 @@ class S3GroupModel(S3Model):
                   super_entity="pr_pentity",
                   deduplicate=self.group_deduplicate,
                   main="name",
-                  extra="description")
+                  extra="description",
+                  list_fields=["id",
+                               "wilayas",
+                               "officers",
+                               "engage",
+                               "asssets", 
+                               "description",
+                              ]) 
 
         # Reusable fields
         group_represent = lambda id: (id and [db.pr_group[id].name] or [NONE])[0]
