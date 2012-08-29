@@ -86,7 +86,7 @@ class S3RequestModel(S3Model):
         org_site_represent = self.org_site_represent
         human_resource_id = self.hrm_human_resource_id
         event_id = self.event_event_id
-
+        group_id = self.pr_group_id
         messages = current.messages
         NONE = messages.NONE
         UNKNOWN_OPT = messages.UNKNOWN_OPT
@@ -153,6 +153,7 @@ class S3RequestModel(S3Model):
                                             req_type_opts.get(opt, UNKNOWN_OPT),
                                         label = T("Request Type")),
                                   req_ref(),
+								  #group_id(),
                                   Field("date", # DO NOT CHANGE THIS
                                         "datetime",
                                         label = T("Date Requested"),
@@ -220,12 +221,17 @@ class S3RequestModel(S3Model):
                                         readable = False,
                                         writable = False
                                         ),
+                                  Field("rporter",
+                                        label = T("Reporter name"),
+                                        ),
                                   human_resource_id("requester_id",
                                                     label = T("Requester"),
-                                                    empty = False,
-                                                    #writable = False,
+                                                    #empty = False,
+													readable = False,
+                                                    writable = False,
                                                     #comment = None,
-                                                    default = auth.s3_logged_in_human_resource()),
+                                                    #default = auth.s3_logged_in_human_resource()
+                                                   ),
                                   human_resource_id("assigned_to_id", # This field should be in req_commit, but that complicates the UI
                                                     readable = False,
                                                     writable = False,
@@ -241,18 +247,18 @@ class S3RequestModel(S3Model):
                                                     writable = False,
                                                     #default = auth.s3_logged_in_human_resource()
                                                     ),
-                                  self.super_link("site_id", "org_site",
-                                                  label = T("Requested For Facility"),
-                                                  default = auth.user.site_id if auth.is_logged_in() else None,
-                                                  readable = True,
-                                                  writable = True,
-                                                  empty = False,
-                                                  # Comment these to use a Dropdown & not an Autocomplete
-                                                  #widget = S3SiteAutocompleteWidget(),
-                                                  #comment = DIV(_class="tooltip",
-                                                  #              _title="%s|%s" % (T("Requested By Facility"),
-                                                  #                                T("Enter some characters to bring up a list of possible matches"))),
-                                                  represent = org_site_represent),
+                                  #self.super_link("site_id", "org_site",
+                                  #                label = T("Requested For Facility"),
+                                  #                default = auth.user.site_id if auth.is_logged_in() else None,
+                                  #                readable = True,
+                                  #                writable = True,
+                                  #                empty = False,
+                                  #                # Comment these to use a Dropdown & not an Autocomplete
+                                  #                #widget = S3SiteAutocompleteWidget(),
+                                  #                #comment = DIV(_class="tooltip",
+                                  #                #              _title="%s|%s" % (T("Requested By Facility"),
+                                  #                #                                T("Enter some characters to bring up a list of possible matches"))),
+                                  #                represent = org_site_represent),
                                   #Field("location",
                                   #      label = T("Neighborhood")),
                                   Field("transport_req",

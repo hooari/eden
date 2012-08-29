@@ -75,7 +75,7 @@ class S3MainMenu:
                 _module = all_modules[module]
                 if (_module.module_type == module_type):
                     if not _module.access:
-                        if module_type == 3:
+                        if module_type == 4:
 						    menu_modules.append(MM(_module.name_nice, c=module, f="group"))	
 						    break
                         menu_modules.append(MM(_module.name_nice, c=module, f="index"))
@@ -852,17 +852,22 @@ class S3OptionsMenu:
                         M("New Team", m="create"),
                         M("List All"),
                     ),
+					#M("Request team", c="pr", f="request",
+                    #  check=manager_mode)(
+                    #   M("New Request Team", m="create"),
+                    #    M("List All"),
+                    #),
                     #M("Job Role Catalog", f="job_role",
                     #  check=manager_mode)(
                     #    M("New Job Role", m="create"),
                     #    M("List All"),
                     #),
-                    #M("Skill Catalog", f="skill",
-                    #  check=manager_mode)(
-                    #    M("New Skill", m="create"),
-                    #    M("List All"),
+                    M("Skill Catalog", f="skill",
+                      check=manager_mode)(
+                        M("New Skill", m="create"),
+                        M("List All"),
                         #M("Skill Provisions", f="skill_provision"),
-                    #),
+                    ),
                     #M("Training Events", f="training_event",
                     #  check=manager_mode)(
                     #    M("New Training Event", m="create"),
@@ -1342,10 +1347,11 @@ class S3OptionsMenu:
                         M("New", m="create"),
                         M("List All"),
                         M("List All Requested Items", f="req_item"),
-                        M("List All Requested Skills", f="req_skill"),
+                        #M("List All Requested Skills", f="req_skill"),
                         #M("Search Requested Items", f="req_item", m="search"),
                     ),
                     M("Commitments", f="commit")(
+                        M("New", m="create"),
                         M("List All")
                     ),
                 )

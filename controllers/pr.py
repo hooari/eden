@@ -274,6 +274,13 @@ def address():
     return output
 
 # -----------------------------------------------------------------------------
+
+#def request():
+#    """ RESTful CRUD controller """
+#
+#    return s3_rest_controller()   
+# -----------------------------------------------------------------------------
+
 def contact():
     """
         RESTful controller to allow creating/editing of contact records within
@@ -360,9 +367,9 @@ def group():
                                 ])
 
     rheader = lambda r: s3db.pr_rheader(r, tabs = [(T("Group Details"), None),
-                                                   (T("Address"), "address"),
-                                                   (T("Contact Data"), "contact"),
-                                                   (T("Members"), "group_membership")
+                                                   #(T("Address"), "address"),
+                                                   #(T("Contact Data"), "contact"),
+                                                   #(T("Members"), "group_membership")
                                                   ])
 
     output = s3_rest_controller(rheader=rheader)

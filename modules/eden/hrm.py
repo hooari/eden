@@ -192,7 +192,7 @@ class S3HRModel(S3Model):
         human_resource_id = S3ReusableField("human_resource_id",
                                             db.hrm_human_resource,
                                             sortby = ["type", "status"],
-                                            requires = hrm_human_resource_requires,
+                                            #requires = hrm_human_resource_requires,
                                             represent = hrm_human_resource_represent,
                                             label = T("Human Resource"),
                                             comment = T("Enter some characters to bring up a list of possible matches"),
@@ -758,6 +758,7 @@ class S3HRSkillModel(S3Model):
         organisation_id = self.org_organisation_id
         site_id = self.org_site_id
         job_role_id = self.hrm_job_role_id
+        group_id = self.pr_group_id
 
         messages = current.messages
         NONE = messages.NONE
@@ -839,6 +840,7 @@ class S3HRSkillModel(S3Model):
         tablename = "hrm_skill"
         table = define_table(tablename,
                              skill_type_id(empty=False),
+                             group_id(),
                              Field("name", notnull=True, unique=True,
                                    length=64,    # Mayon compatibility
                                    label=T("Name")),

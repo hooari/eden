@@ -405,22 +405,110 @@ if deployment_settings.has_module(module):
             99:T("Other")
         }
 
+        wilayas = {
+            1:T("Adrar"),
+            2:T("Chlef"),
+            3:T("Laghouat"),
+            4:T("Oum ElBouaghi"),
+            5:T("Batna"),
+            6:T("Bejaia"),
+            7:T("Biskra"),
+            8:T("Bechar"),
+            9:T("Blida"),
+            10:T("Bouira"),
+            11:T("Tamenrasset"),
+            12:T("Tebessa"),
+            13:T("Tlemcen"),
+            14:T("Tiaret"),
+            15:T("Tizi Ouzou"),
+            16:T("Alger"),
+            17:T("Djelfa"),
+            18:T("Jijel"),
+            19:T("Setif"),
+            20:T("Saida"),
+            21:T("Skikda"),
+            22:T("Sidi Bel Abbes"),
+            23:T("Annaba"),
+            24:T("Ghelma"),
+            25:T("Constantine"),
+            26:T("Medea"),
+            27:T("Mostaghanem"),
+            28:T("M'sila"),
+            29:T("Mascara"),
+            30:T("Ouargla"),
+            31:T("Oran"),
+            32:T("El Beyedh"),
+            33:T("Illizi"),
+            34:T("Bordj Bou Arreridj"),
+            35:T("Boumerdes"),
+            36:T("El Taref"),
+            37:T("Tindouf"),
+            38:T("Tessemssilt"),
+            39:T("El Oued"),
+            40:T("Khenchela"),
+            41:T("Souk Ahrass"),
+            42:T("Tipaza"),
+            43:T("Mila"),
+            44:T("Ain Defla"),
+            45:T("Naama"),
+            46:T("Ain Temouchent"),
+            47:T("Ghardaia"),
+            48:T("Relizane")
+        }
+        nature_degas = {
+            1:T("Administration"),
+            2:T("Urban area"),
+            3:T("Trade"),
+            4:T("Health Infrastructure"),
+            5:T("Raods Infrastructure"),
+            6:T("School Infrastructure"),
+            7:T("Hydrolic Infrastructure"),
+            8:T("Mosque"),
+            9:T("Energie"),
+            99:T("Other")
+        }
+
         # Main Resource -----------------------------------------------------------
         # contains Section 1: Identification Information
         #
+        messages = current.messages
+        UNKNOWN_OPT = messages.UNKNOWN_OPT
         resourcename = "rat"
         tablename = "assess_rat"
         table = db.define_table(
             tablename,
+			Field("description",
+                  label=T("Identification")),
             Field("date", "date",
                   requires = [IS_DATE(format = s3_date_format),
                               IS_NOT_EMPTY()],
                   default = datetime.datetime.today()),
-            location_id(widget = S3LocationAutocompleteWidget(),
-                        requires = IS_LOCATION()),
-            human_resource_id("staff_id", label=T("Staff")),
-            human_resource_id("staff2_id", label=T("Staff2")),
+            #location_id(widget = S3LocationAutocompleteWidget(),
+            #           requires = IS_LOCATION()),
+            #human_resource_id("staff_id", label=T("Staff")),
+            #human_resource_id("staff2_id", label=T("Staff2")),
+			Field("wilayas", "integer",
+                  requires = IS_IN_SET(wilayas, zero=None),
+                  default = 1,
+                  label = T("Province"),
+                  represent = lambda opt: \
+                              wilayas.get(opt, UNKNOWN_OPT)),
+			Field("place",
+                  label=T("Place")),
+             Field("nature", "list:integer",
+				  #readable=False,
+                  #writable=False,
+                  label = T("Nature"),
+                  requires = IS_NULL_OR(IS_IN_SET(nature_degas,
+                                                  multiple=True,
+                                                  zero=None)),
+                  #widget = SQLFORM.widgets.checkboxes.widget,
+                  represent = lambda opt, set=nature_degas: \
+                                  rat_represent_multiple(set, opt),
+                  comment = "(%s)" % T("Select all that apply")),
             Field("interview_location", "list:integer",
+				  readable=False,
+                  writable=False,
                   label = T("Interview taking place at"),
                   requires = IS_NULL_OR(IS_IN_SET(rat_interview_location_opts,
                                                   multiple=True,
@@ -430,6 +518,8 @@ if deployment_settings.has_module(module):
                                   rat_represent_multiple(set, opt),
                   comment = "(%s)" % T("Select all that apply")),
             Field("interviewee", "list:integer",
+                  readable=False,
+                  writable=False,
                   label = T("Person interviewed"),
                   requires = IS_NULL_OR(IS_IN_SET(rat_interviewee_opts,
                                                   multiple=True,
@@ -439,13 +529,16 @@ if deployment_settings.has_module(module):
                                   rat_represent_multiple(set, opt),
                   comment = "(%s)" % T("Select all that apply")),
             Field("accessibility", "integer",
+                  readable=False,
+                  writable=False,
                   label = T("Accessibility of Affected Location"),
                   requires = IS_NULL_OR(IS_IN_SET(rat_accessibility_opts,
                                                   zero=None)),
                   represent = lambda opt: rat_accessibility_opts.get(opt, opt)),
+			ireport_id(),
             s3_comments(),
             #document_id(),  # Better to have multiple Documents on a Tab
-            shelter_id(),
+            #shelter_id(),
             *s3_meta_fields())
 
         # CRUD strings
@@ -542,7 +635,7 @@ if deployment_settings.has_module(module):
         s3mgr.configure(tablename,
                         listadd=False,    # We override this in the RAT controller for when not a component
                         onaccept=rat_assessment_onaccept)
-
+       
         # Section 2: Demographic --------------------------------------------------
 
         resourcename = "section2"

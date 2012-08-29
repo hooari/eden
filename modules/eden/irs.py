@@ -45,12 +45,14 @@ class S3IRSModel(S3Model):
     def model(self):
 
         db = current.db
+        s3db = current.s3db
         T = current.T
         request = current.request
         s3 = current.response.s3
         settings = current.deployment_settings
 
         location_id = self.gis_location_id
+        
 
         datetime_represent = S3DateTime.datetime_represent
 
@@ -61,6 +63,7 @@ class S3IRSModel(S3Model):
         meta_fields = s3.meta_fields
         set_method = self.set_method
         super_link = self.super_link
+        NONE = current.messages.NONE
 
         # ---------------------------------------------------------------------
         # List of Incident Categories
@@ -274,17 +277,24 @@ class S3IRSModel(S3Model):
                              location_id(),
                              # Very basic Impact Assessment
                              Field("affected", "integer",
+                                   readable = False,
+                                   writable = False,     
                                    label=T("Number of People Affected"),
                                    represent = lambda val: val or T("unknown"),
                                    ),
                              Field("dead", "integer",
+								   readable = False,
+                                   writable = False,
                                    label=T("Number of People Dead"),
                                    represent = lambda val: val or T("unknown"),
                                    ),
                              Field("injured", "integer",
+                                   readable = False,
+                                   writable = False,
                                    label=T("Number of People Injured"),
                                    represent = lambda val: val or T("unknown"),
                                    ),
+                                   #assessment_id(),
                              # Probably too much to try & capture
                              #Field("missing", "integer",
                              #      label=T("Number of People Missing")),

@@ -1111,6 +1111,7 @@ class S3GroupModel(S3Model):
         # Reusable fields
         group_represent = lambda id: (id and [db.pr_group[id].name] or [NONE])[0]
         group_id = S3ReusableField("group_id", db.pr_group,
+                                   label = "Group",
                                    sortby="name",
                                    requires = IS_NULL_OR(IS_ONE_OF(db, "pr_group.id",
                                                                    "%(id)s: %(name)s",
@@ -1126,10 +1127,12 @@ class S3GroupModel(S3Model):
 
         # Components
         self.add_component("pr_group_membership", pr_group="group_id")
+        #add_component("pr_request",pr_group="group_id")
 
         # ---------------------------------------------------------------------
         # Group membership
         #
+        
         resourcename = "group_membership"
         tablename = "pr_group_membership"
         table = define_table(tablename,
@@ -2977,7 +2980,7 @@ def pr_rheader(r, tabs=[]):
                                    group.description or "",
                                    TH(""),
                                    "")
-                                ), rheader_tabs)
+                                 ),rheader_tabs)
                 return rheader
 
     return None
