@@ -973,7 +973,11 @@ class S3GroupModel(S3Model):
             4:T("other"),
             5:T("Mailing Lists"),
         }
-
+        pr_group_state = {
+            1:T("Requested"),
+            2:T("Mobilized"),
+            3: "",
+        }
         tablename = "pr_group"
         table = define_table(tablename,
                              self.super_link("pe_id", "pr_pentity"),
@@ -983,6 +987,12 @@ class S3GroupModel(S3Model):
                                    label = T("Group Type"),
                                    represent = lambda opt: \
                                                pr_group_types.get(opt, UNKNOWN_OPT)),
+                             Field("group_state", "integer",
+                                   requires = IS_IN_SET(pr_group_state, zero=None),
+                                   default = 3,
+                                   label = T("Group State"),
+                                   represent = lambda opt: \
+                                               pr_group_state.get(opt, UNKNOWN_OPT)),
                              Field("wilayas", "integer",
                                    requires = IS_IN_SET(wilayas, zero=None),
                                    default = 1,
@@ -1101,11 +1111,12 @@ class S3GroupModel(S3Model):
                   main="name",
                   extra="description",
                   list_fields=["id",
+                               "description",
                                "wilayas",
                                "officers",
                                "engage",
                                "asssets", 
-                               "description",
+                               "group_state",
                               ]) 
 
         # Reusable fields

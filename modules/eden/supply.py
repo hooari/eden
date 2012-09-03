@@ -354,6 +354,12 @@ class S3SupplyModel(S3Model):
         #  These are Template items
         #  Instances of these become Inventory Items & Request items
         #
+        item_state = {
+            1:T("Requested"),
+            2:T("Mobilized"),
+            3:T("Stock"),
+            4:"",
+        }
         tablename = "supply_item"
         table = define_table(tablename,
                              Field("wilaya", "integer",
@@ -369,6 +375,12 @@ class S3SupplyModel(S3Model):
                              Field("code",
                                    label = T("Code"),
                                    length=16),
+                             Field("item_state", "integer",
+                                   requires = IS_IN_SET(item_state, zero=None),
+                                   default = 3,
+                                   label = T("Item State"),
+                                   represent = lambda opt: \
+                                               item_state.get(opt, UNKNOWN_OPT)),
                              Field("um",
                                    length=128,
                                    label = T("Unit of Measure"),

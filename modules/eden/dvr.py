@@ -90,7 +90,7 @@ class S3DVRModel(S3Model):
                                   Field("damage", "integer",
                                         requires = IS_NULL_OR(IS_IN_SET(dvr_damage_opts)),
                                         represent = lambda opt: dvr_damage_opts.get(opt, NONE),
-                                        label= T("Damage Assessment")),
+                                        label= T("Damage Nature")),
                                   Field("reporter",
                                         #readable = False,
                                         #writable = False,

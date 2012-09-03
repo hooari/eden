@@ -398,9 +398,9 @@ class S3OptionsMenu:
         ADMIN = session.s3.system_roles.ADMIN
 
         return M(c="assess")(
-                    M("Rapid Assessments", f="rat")(
-                        M("New", m="create"),
-                        M("List All"),
+                    M("Materiel Damages", f="rat")(
+                        M("New Damage", m="create"),
+                        M("List Damages"),
                         #M("Search", m="search"),
                     ),
                     #M("Impact Assessments", f="assess")(
@@ -644,10 +644,10 @@ class S3OptionsMenu:
         """ DVR Menu """
 
         return M(c="dvr")(
-                    M("Cases", f="case")(
-                        M("New", m="create"),
-                        M("List All"),
-                        #M("Search", m="search")
+                    M("Managing Victimes", f="case")(
+                        M("New Victime", m="create"),
+                        M("List Victimes"),
+                        M("Search", m="search")
                     ),
                 )
 
@@ -847,9 +847,9 @@ class S3OptionsMenu:
                     #    M("Import", f="person", m="import",
                     #      vars={"group":"volunteer"}, p="create"),
                     #),
-                    M("Teams", f="group",
+                    M("Human Ressources Management", f="group",
                       check=manager_mode)(
-                        M("New Team", m="create"),
+                        M("New Human Ressources", m="create"),
                         M("List All"),
                     ),
 					#M("Request team", c="pr", f="request",
@@ -862,12 +862,12 @@ class S3OptionsMenu:
                     #    M("New Job Role", m="create"),
                     #    M("List All"),
                     #),
-                    M("Skill Catalog", f="skill",
-                      check=manager_mode)(
-                        M("New Skill", m="create"),
-                        M("List All"),
-                        #M("Skill Provisions", f="skill_provision"),
-                    ),
+                    #M("Skill Catalog", f="skill",
+                    #  check=manager_mode)(
+                    #    M("New Skill", m="create"),
+                    #    M("List All"),
+                    #    #M("Skill Provisions", f="skill_provision"),
+                    #),
                     #M("Training Events", f="training_event",
                     #  check=manager_mode)(
                     #    M("New Training Event", m="create"),
@@ -948,9 +948,9 @@ class S3OptionsMenu:
                     #    M("New", m="create"),
                     #    M("List All"),
                     #),
-                    M("Items", c="supply", f="item")(
-                        M("New", m="create"),
-                        M("List All"),
+                    M("Items Management", c="supply", f="item")(
+                        M("New Item", m="create"),
+                        M("List All Items"),
                         M("Search", f="item", m="search"),
                     ),
                     # Catalog Items moved to be next to the Item Categories
@@ -967,7 +967,7 @@ class S3OptionsMenu:
                     M("Item Categories", c="supply", f="item_category",
                       restrict=[ADMIN])(
                         M("New Item Category", m="create"),
-                        M("List All"),
+                        M("List Categories"),
                     ),
                     #M("Requests", c="req", f="req")(
                     #    M("New", m="create"),
@@ -991,9 +991,9 @@ class S3OptionsMenu:
         ADMIN = session.s3.system_roles.ADMIN
 
         return M(c="irs")(
-                    M("Incident Reports", f="ireport")(
-                        M("New", m="create"),
-                        M("List All"),
+                    M("Managing Incidents", f="ireport")(
+                        M("New incident", m="create"),
+                        M("List incidents"),
                         #M("Open Incidents", vars={"open":1}),
                         #M("Timeline", args="timeline"),
                         #M("Import", m="import"),
@@ -1005,8 +1005,8 @@ class S3OptionsMenu:
                                     #aggregate="count"))
                     ),
                     M("Incident Categories", f="icategory")(
-                        M("New", m="create"),
-                        M("List All"),
+                        M("New Incident Category", m="create"),
+                        M("List Incident Categories"),
                     ),
                     #M("Ushahidi " + T("Import"), f="ireport", restrict=[ADMIN],
                     #  args="ushahidi")

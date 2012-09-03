@@ -921,23 +921,23 @@ def group():
                          (_group_type == 3)
 
     # CRUD Strings
-    ADD_TEAM = T("Add Team")
-    LIST_TEAMS = T("List Teams")
+    ADD_TEAM = T("Add Human Ressoure")
+    LIST_TEAMS = T("List Human Ressources")
     s3.crud_strings[tablename] = Storage(
         title_create = ADD_TEAM,
-        title_display = T("Team Details"),
+        title_display = T("Human Ressources Details"),
         title_list = LIST_TEAMS,
-        title_update = T("Edit Team"),
-        title_search = T("Search Teams"),
-        subtitle_create = T("Add New Team"),
+        title_update = T("Edit Human Ressources"),
+        title_search = T("Search Human Ressources"),
+        subtitle_create = T("Add New Human Ressources"),
         subtitle_list = T("Teams"),
         label_list_button = LIST_TEAMS,
-        label_create_button = T("Add New Team"),
-        label_search_button = T("Search Teams"),
-        msg_record_created = T("Team added"),
-        msg_record_modified = T("Team updated"),
-        msg_record_deleted = T("Team deleted"),
-        msg_list_empty = T("No Teams currently registered"))
+        label_create_button = T("Add New Human Ressources"),
+        label_search_button = T("Search Human Ressources"),
+        msg_record_created = T("Human Ressources added"),
+        msg_record_modified = T("Human Ressources updated"),
+        msg_record_deleted = T("Human Ressources deleted"),
+        msg_list_empty = T("No Human Ressources currently registered"))
 
     s3.crud_strings["pr_group_membership"] = Storage(
         title_create = T("Add Member"),
@@ -969,21 +969,22 @@ def group():
     def postp(r, output):
 
         if r.interactive:
-            if not r.component:
-                update_url = URL(args=["[id]", "group_membership"])
-                s3_action_buttons(r, deletable=False, update_url=update_url)
-                if "msg" in deployment_settings.modules:
-                    response.s3.actions.append({
-                        "url": URL(f="compose",
-                                   vars = {"group_id": "[id]"}),
-                        "_class": "action-btn",
-                        "label": str(T("Send Notification"))})
+            pass 
+            #if not r.component:
+            #    update_url = URL(args=["[id]", "group_membership"])
+            #    s3_action_buttons(r, deletable=False, update_url=update_url)
+                #if "msg" in deployment_settings.modules:
+                #    response.s3.actions.append({
+                #        "url": URL(f="compose",
+                #                   vars = {"group_id": "[id]"}),
+                #        "_class": "action-btn",
+                #        "label": str(T("Send Notification"))})
 
         return output
     response.s3.postp = postp
 
     tabs = [
-            (T("Team Details"), None),
+            (T("Human Ressources Details"), None),
             # Team should be contacted either via the Leader or
             # simply by sending a message to the group as a whole.
             #(T("Contact Data"), "contact"),

@@ -175,7 +175,7 @@ def index():
                 ["res", T("Inventory Items"), "supply", "index"], 
                 #["dec", T("Gap Map"), "project", "gap_map"],
                 #["dec", T("Gap Report"), "project", "gap_report"],
-                ["dec", T("Requests"), "req", "req"],
+                #["dec", T("Requests"), "req", "req"],
                 #["res", T("Requests"), "req", "req"],
                 ["res", T("Staff & Volunteers"), "hrm", "group"],
                 ["res", T("Map"), "gis", "index"],
