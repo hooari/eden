@@ -644,10 +644,10 @@ class S3OptionsMenu:
         """ DVR Menu """
 
         return M(c="dvr")(
-                    M("Managing Victimes", f="case")(
-                        M("New Victime", m="create"),
-                        M("List Victimes"),
-                        M("Search", m="search")
+                    M("Managing Victims", f="case")(
+                        M("New Victim", m="create"),
+                        M("List Victims"),
+                        #M("Search", m="search")
                     ),
                 )
 

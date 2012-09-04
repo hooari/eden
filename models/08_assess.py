@@ -542,25 +542,25 @@ if deployment_settings.has_module(module):
             *s3_meta_fields())
 
         # CRUD strings
-        ADD_ASSESSMENT = T("Add Rapid Assessment")
-        LIST_ASSESSMENTS = T("List Rapid Assessments")
+        ADD_ASSESSMENT = T("Add Damage")
+        LIST_ASSESSMENTS = T("List Damages")
         s3.crud_strings[tablename] = Storage(
             title_create = ADD_ASSESSMENT,
-            title_display = T("Rapid Assessment Details"),
+            title_display = T("Damages Details"),
             title_list = LIST_ASSESSMENTS,
-            title_update = T("Edit Rapid Assessment"),
-            title_search = T("Search Rapid Assessments"),
-            subtitle_create = T("Add New Rapid Assessment"),
-            subtitle_list = T("Rapid Assessments"),
+            title_update = T("Edit Damage"),
+            title_search = T("Search Damages"),
+            subtitle_create = T("Add New Damage"),
+            subtitle_list = T("Damages"),
             label_list_button = LIST_ASSESSMENTS,
             label_create_button = ADD_ASSESSMENT,
-            label_delete_button = T("Delete Rapid Assessment"),
-            msg_record_created = T("Rapid Assessment added"),
-            msg_record_modified = T("Rapid Assessment updated"),
-            msg_record_deleted = T("Rapid Assessment deleted"),
-            msg_list_empty = T("No Rapid Assessments currently registered"),
-            name_nice = T("Rapid Assessment"),
-            name_nice_plural = T("Rapid Assessments"))
+            label_delete_button = T("Delete Damage"),
+            msg_record_created = T("Damage added"),
+            msg_record_modified = T("Damage updated"),
+            msg_record_deleted = T("Damage deleted"),
+            msg_list_empty = T("No Damages currently registered"),
+            name_nice = T("Damage"),
+            name_nice_plural = T("Damages"))
 
         # -------------------------------------------------------------------------
         def rat_assessment_onaccept(form):

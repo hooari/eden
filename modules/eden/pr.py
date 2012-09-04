@@ -1001,7 +1001,7 @@ class S3GroupModel(S3Model):
                                                wilayas.get(opt, UNKNOWN_OPT)),
                              Field("datetime", "datetime",
                                    #default = request.utcnow,
-                                   label = T("Date/Time of Arival"),
+                                   label = T("Date/Time of Request"),
                                    widget = S3DateTimeWidget(future=0),
                                    represent = lambda val: datetime_represent(val, utc=True),
                                    requires = IS_NULL_OR(IS_UTC_DATETIME()),

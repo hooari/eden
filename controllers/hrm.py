@@ -932,7 +932,7 @@ def group():
         subtitle_create = T("Add New Human Ressources"),
         subtitle_list = T("Teams"),
         label_list_button = LIST_TEAMS,
-        label_create_button = T("Add New Human Ressources"),
+        label_create_button = T("Add Human Reinforcement"),
         label_search_button = T("Search Human Ressources"),
         msg_record_created = T("Human Ressources added"),
         msg_record_modified = T("Human Ressources updated"),

@@ -237,9 +237,10 @@ class S3IRSModel(S3Model):
                              super_link("doc_id", "doc_entity"),
                              Field("name", label = T("Name"),
                                    requires = IS_NOT_EMPTY()),
-                             Field("message", "text", label = T("Description"),
-                                   represent = lambda text: \
-                                       s3_truncate(text, length=48, nice=True)),
+                             Field("message", label = T("Description"),
+                                   #represent = lambda text: \
+                                   #    s3_truncate(text, length=48, nice=True)
+                                  ),
                              Field("category", label = T("Category"),
                                    # The full set available to Admins & Imports/Exports
                                    # (users use the subset by over-riding this in the Controller)
@@ -251,8 +252,8 @@ class S3IRSModel(S3Model):
                                        irs_incident_type_opts.get(opt, opt)),
                              # Better to use a plain text field than to clutter the PR
                              Field("person",
-                                   #readable = False,
-                                   #writable = False,
+                                   readable = False,
+                                   writable = False,
                                    label = T("Reporter Name")),
                                    #comment = (T("At/Visited Location (not virtual)"))),
                              Field("contact",
@@ -436,11 +437,12 @@ class S3IRSModel(S3Model):
                                  "datetime",
                                  "location_id",
                                  #"organisation_id",
-                                 "affected",
-                                 "dead",
-                                 "injured",
+                                 #"affected",
+                                 #"dead",
+                                 #"injured",
+                                 "reporter",
                                  #"verified",
-                                 "message",
+                                 #"message",
 				 #"comments"
                                 ])
 
