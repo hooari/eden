@@ -644,10 +644,10 @@ class S3OptionsMenu:
         """ DVR Menu """
 
         return M(c="dvr")(
-                    M("Managing Victimes", f="case")(
-                        M("New Victime", m="create"),
-                        M("List Victimes"),
-                        M("Search", m="search")
+                    M("Managing Victims", f="case")(
+                        M("New Victim", m="create"),
+                        M("List Victims"),
+                        #M("Search", m="search")
                     ),
                 )
 
@@ -964,11 +964,11 @@ class S3OptionsMenu:
                     #    M("List All"),
                     #    #M("Search", m="search"),
                     #),
-                    M("Item Categories", c="supply", f="item_category",
-                      restrict=[ADMIN])(
-                        M("New Item Category", m="create"),
-                        M("List Categories"),
-                    ),
+                    #M("Item Categories", c="supply", f="item_category",
+                    #  restrict=[ADMIN])(
+                    #    M("New Item Category", m="create"),
+                    #    M("List Categories"),
+                    #),
                     #M("Requests", c="req", f="req")(
                     #    M("New", m="create"),
                     #    M("List All"),
@@ -1004,10 +1004,10 @@ class S3OptionsMenu:
                                     #fact="datetime",
                                     #aggregate="count"))
                     ),
-                    M("Incident Categories", f="icategory")(
-                        M("New Incident Category", m="create"),
-                        M("List Incident Categories"),
-                    ),
+                    #M("Incident Categories", f="icategory")(
+                    #    M("New Incident Category", m="create"),
+                    #    M("List Incident Categories"),
+                    #),
                     #M("Ushahidi " + T("Import"), f="ireport", restrict=[ADMIN],
                     #  args="ushahidi")
                 )

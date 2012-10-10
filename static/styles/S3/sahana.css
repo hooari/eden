@@ -229,7 +229,7 @@ textarea:focus {
 
 /* Links should ALWAYS be unvisited */
 a {
-    color: #039;
+    color: #04050A;
     text-decoration: underline;
     outline: 0;
 }
@@ -442,7 +442,7 @@ table {
 #menu_options {
     margin: 6px 0px 0px 0px;
     /*padding:5px;*/
-    background: #e7ebed;
+    background:#040141; 
     /*border: 1px solid #bbb;*/
     border-radius: 0px 5px 5px 0px;
     overflow: auto;
@@ -451,11 +451,12 @@ table {
 #subnav li, #subnav ul li {
     list-style: none;
     clear: both;
+    background:#F4FFA9;
 }
 #subnav div a {
     display: block;
     padding: 5px;
-    background :#37404c;
+    background :#FE0F07; /*#37404c;*/
     font-weight: bold;
 }
 #subnav ul li {
@@ -549,7 +550,7 @@ table {
 
 /* common styles */
 #content {
-    background: #f0f3f4;
+    background: #F2F9AA;  /*#f0f3f4;*/
     border: 1px solid #bbb;
     margin: 6px 5px;
     padding: 0px;
@@ -578,11 +579,11 @@ table {
     );
     background-image: -moz-linear-gradient(
         center bottom,
-        rgb(188,204,217) 16%,
-        rgb(212,225,235) 57%
+        rgb(241,37,5) 16%, /*rgb(188,204,217) 16%,*/
+        rgb(241,252,63) 57%,  /*rgb(212,225,235) 57%*/
     );
     margin: -6px -10px 6px -10px;
-    background-color: #cfdde7;
+    background-color: #FE460E;
     text-shadow: 0px 1px 1px #e3edf4;
     border: 1px solid #aecbe0;
     border-top: 1px solid #e1eaf1;
@@ -683,9 +684,9 @@ div.form-container {
 }
 div.form-container form {
     padding: 5px;
-    background-color: #fff;
+    background-color:#F8FBE7; /* #fff;*/
     border: #eee 1px solid;
-    background-color: #fbfbfb;
+    background-color: #F8FBE7;/*#fbfbfb;*/
 }
 div.form-container p {
     margin: 0.5em 0 0 0;
@@ -1422,6 +1423,7 @@ li input + a {
 	padding: 10px;
 	margin-top: 10px;
 	width: auto;
+    background:#FDFFD6; 
 }
 
 #menu_box_center {

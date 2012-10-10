@@ -932,7 +932,7 @@ def group():
         subtitle_create = T("Add New Human Ressources"),
         subtitle_list = T("Teams"),
         label_list_button = LIST_TEAMS,
-        label_create_button = T("Add New Human Ressources"),
+        label_create_button = T("Add Human Reinforcement"),
         label_search_button = T("Search Human Ressources"),
         msg_record_created = T("Human Ressources added"),
         msg_record_modified = T("Human Ressources updated"),
@@ -955,31 +955,30 @@ def group():
         msg_record_deleted = T("Membership deleted"),
         msg_list_empty = T("No Members currently registered"))
 
-    s3mgr.configure(tablename, main="name", extra="description",
-                    # Redirect to member list when a new group has been created
-                    create_next = URL(f="group",
-                                      args=["[id]", "group_membership"]))
-    s3mgr.configure("pr_group_membership",
-                    list_fields=["id",
-                                 "person_id",
-                                 "group_head",
-                                 "description"])
+    #s3mgr.configure(tablename, main="name", extra="description",
+    #                # Redirect to member list when a new group has been created
+    #                create_next = URL(f="group",
+    #                                  args=["[id]", "group_membership"]))
+    #s3mgr.configure("pr_group_membership",
+    #                list_fields=["id",
+    #                             "person_id",
+    #                             "group_head",
+    #                             "description"])
 
     # Post-process
     def postp(r, output):
 
         if r.interactive:
             pass 
-            #if not r.component:
-            #    update_url = URL(args=["[id]", "group_membership"])
-            #    s3_action_buttons(r, deletable=False, update_url=update_url)
+            if not r.component:
+                update_url = URL(args=["[id]", "group_membership"])
+                s3_action_buttons(r, deletable=False, update_url=update_url)
                 #if "msg" in deployment_settings.modules:
                 #    response.s3.actions.append({
                 #        "url": URL(f="compose",
                 #                   vars = {"group_id": "[id]"}),
                 #        "_class": "action-btn",
                 #        "label": str(T("Send Notification"))})
-
         return output
     response.s3.postp = postp
 

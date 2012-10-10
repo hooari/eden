@@ -51,6 +51,9 @@ class S3DVRModel(S3Model):
         s3db = current.s3db
         s3 = current.response.s3
 
+        request = current.request
+        datetime_represent = S3DateTime.datetime_represent
+
         ireport_id = s3db.irs_ireport_id
         person_id = self.pr_person_id
         location_id = self.gis_location_id
@@ -91,6 +94,11 @@ class S3DVRModel(S3Model):
                                         requires = IS_NULL_OR(IS_IN_SET(dvr_damage_opts)),
                                         represent = lambda opt: dvr_damage_opts.get(opt, NONE),
                                         label= T("Damage Nature")),
+                                  Field("datetime", "datetime",
+                                        default = request.utcnow,
+                                        label = T("Date/Time of Find"),
+                                        widget = S3DateTimeWidget(future=0),
+                                        represent = lambda val: datetime_represent(val, utc=True)),
                                   Field("reporter",
                                         #readable = False,
                                         #writable = False,

@@ -168,11 +168,11 @@ def index():
                 #["facility", T("Offices"), "org", "office"],
                 ["sit", T("Incidents"), "irs", "ireport"],
                 ["sit", T("Assessments"), "assess", "rat"],
-                ["sit", T("Victimes"), "dvr", "case"],
+                ["sit", T("Disaster Victim Registry"), "dvr", "case"],
                 #["sit", T("Assets"), "asset", "asset"],
                 #["sit", T("Inventory Items"), "supply", "index"], 
                 #["sit", T("Inventory Items"), "inv", "inv_item"],
-                ["res", T("Inventory Items"), "supply", "index"], 
+                ["res", T("Items Management"), "supply", "index"], 
                 #["dec", T("Gap Map"), "project", "gap_map"],
                 #["dec", T("Gap Report"), "project", "gap_report"],
                 #["dec", T("Requests"), "req", "req"],
@@ -207,17 +207,17 @@ def index():
                                     )
                                  )
 
-    div_arrow = DIV(IMG(_src = "/%s/static/img/arrow_blue_right.png" % \
+    div_arrow = DIV(IMG(_src = "/%s/static/img/fleche2.png" % \
                                request.application),
                           _class = "div_arrow")
-    div_arro = DIV(IMG(_src = "/%s/static/img/civile.png" % \
+    div_arro = DIV(IMG(_src = "/%s/static/img/cvile.png" % \
                                request.application),
                           _class = "div_arro")
     sit_dec_res_box = DIV(menu_divs["sit"],
                           div_arrow,
                           #div_arro,
-                          menu_divs["dec"],
-                          div_arrow,
+                          #menu_divs["dec"],
+                          #div_arrow,
                           menu_divs["res"],
                           _id = "sit_dec_res_box",
                           _class = "menu_box fleft swidth"

@@ -201,6 +201,23 @@ class S3IRSModel(S3Model):
             "other.peopleTrapped": T("People Trapped"),
             "other.powerFailure": T("Power Failure"),
         }
+        irs_incident_type = {
+            1:T("Flood"),
+            2:T("Forest Fire"),
+            3:T("Urban Fire"),
+            4:T("Road Accident"),
+            5:T("Road Closed"),
+            6:T("Bomb Explosion"),
+            7:T("Railway Accident"),
+            8:T("Earthquake"),
+            9:T("Tsunami"),
+            10:T("Aircraft Crash"),
+            11:T("Volcanic Event"),
+            12:T("Storm"),
+            13:T("Sea Person Flood"),
+            14:T("Choisir"),
+          
+        }
 
         # This Table defines which Categories are visible to end-users
         tablename = "irs_icategory"
@@ -237,22 +254,29 @@ class S3IRSModel(S3Model):
                              super_link("doc_id", "doc_entity"),
                              Field("name", label = T("Name"),
                                    requires = IS_NOT_EMPTY()),
-                             Field("message", "text", label = T("Description"),
-                                   represent = lambda text: \
-                                       s3_truncate(text, length=48, nice=True)),
-                             Field("category", label = T("Category"),
-                                   # The full set available to Admins & Imports/Exports
-                                   # (users use the subset by over-riding this in the Controller)
-                                   requires = IS_NULL_OR(IS_IN_SET_LAZY(lambda: \
-                                       sort_dict_by_values(irs_incident_type_opts))),
-                                   # Use this instead if a simpler set of Options required
-                                   #requires = IS_NULL_OR(IS_IN_SET(irs_incident_type_opts)),
+                             Field("message", label = T("Description"),
+                                   #represent = lambda text: \
+                                   #    s3_truncate(text, length=48, nice=True)
+                                  ),
+							 Field("catincident", "integer",
+                                   requires = IS_IN_SET(irs_incident_type, zero=None),
+                                   default = 14,
+                                   label = T("Category"),
                                    represent = lambda opt: \
-                                       irs_incident_type_opts.get(opt, opt)),
+                                               irs_incident_type.get(opt, UNKNOWN_OPT)),
+                             #Field("category", label = T("Category"),
+                             #      # The full set available to Admins & Imports/Exports
+                             #      # (users use the subset by over-riding this in the Controller)
+                             #      requires = IS_NULL_OR(IS_IN_SET_LAZY(lambda: \
+                             #          sort_dict_by_values(irs_incident_type_opts))),
+                             #      # Use this instead if a simpler set of Options required
+                             #      #requires = IS_NULL_OR(IS_IN_SET(irs_incident_type_opts)),
+                             #      represent = lambda opt: \
+                             #          irs_incident_type_opts.get(opt, opt)),
                              # Better to use a plain text field than to clutter the PR
                              Field("person",
-                                   #readable = False,
-                                   #writable = False,
+                                   readable = False,
+                                   writable = False,
                                    label = T("Reporter Name")),
                                    #comment = (T("At/Visited Location (not virtual)"))),
                              Field("contact",
@@ -362,24 +386,25 @@ class S3IRSModel(S3Model):
                         field = ["name",
                                  "message",
                                  "comments",
+                                 "catincident",
                                 ]
                     ),
-                    S3SearchLocationHierarchyWidget(
-                        name="incident_search_L1",
-                        field="L1",
-                        cols = 3,
-                    ),
-                    S3SearchLocationHierarchyWidget(
-                        name="incident_search_L2",
-                        field="L2",
-                        cols = 3,
-                    ),
-                    S3SearchOptionsWidget(
-                        name="incident_search_category",
-                        field="category",
-                        label = T("Category"),
-                        cols = 3,
-                    ),
+                    #S3SearchLocationHierarchyWidget(
+                    #    name="incident_search_L1",
+                    #    field="L1",
+                    #    cols = 3,
+                    #),
+                    #S3SearchLocationHierarchyWidget(
+                    #    name="incident_search_L2",
+                    #    field="L2",
+                    #    cols = 3,
+                    #),
+                    #S3SearchOptionsWidget(
+                    #    name="incident_search_category",
+                    #    field="category",
+                    #    label = T("Category"),
+                    #    cols = 3,
+                    #),
                     S3SearchMinMaxWidget(
                         name="incident_search_date",
                         method="range",
@@ -390,10 +415,10 @@ class S3IRSModel(S3Model):
 
         hierarchy = current.gis.get_location_hierarchy()
         report_fields = [
-                         "category",
+                         #"category",
                          "datetime",
-                         (hierarchy["L1"], "L1"),
-                         (hierarchy["L2"], "L2"),
+                         #(hierarchy["L1"], "L1"),
+                         #(hierarchy["L2"], "L2"),
                         ]
 
         # Resource Configuration
@@ -402,22 +427,22 @@ class S3IRSModel(S3Model):
                   search_method = ireport_search,
                   report_options=Storage(
                       search=[
-                            S3SearchLocationHierarchyWidget(
-                                name="incident_search_L1",
-                                field="L1",
-                                cols = 3,
-                            ),
-                            S3SearchLocationHierarchyWidget(
-                                name="incident_search_L2",
-                                field="L2",
-                                cols = 3,
-                            ),
-                            S3SearchOptionsWidget(
-                                name="incident_search_category",
-                                field="category",
-                                label = T("Category"),
-                                cols = 3,
-                            ),
+                            #S3SearchLocationHierarchyWidget(
+                            #    name="incident_search_L1",
+                            #    field="L1",
+                            #    cols = 3,
+                            #),
+                            #S3SearchLocationHierarchyWidget(
+                            #    name="incident_search_L2",
+                            #    field="L2",
+                            #    cols = 3,
+                            #),
+                            #S3SearchOptionsWidget(
+                            #    name="incident_search_category",
+                            #    field="category",
+                            #    label = T("Category"),
+                            #    cols = 3,
+                            #),
                             S3SearchMinMaxWidget(
                                 name="incident_search_date",
                                 method="range",
@@ -433,15 +458,17 @@ class S3IRSModel(S3Model):
                   list_fields = ["id",
                                  "name",
                                  "category",
+                                 "catincident"
                                  "datetime",
                                  "location_id",
                                  #"organisation_id",
-                                 "affected",
-                                 "dead",
-                                 "injured",
+                                 #"affected",
+                                 #"dead",
+                                 #"injured",
+                                 "reporter",
                                  #"verified",
-                                 "message",
-				 #"comments"
+                                 #"message",
+				                 "comments"
                                 ])
 
         # Components

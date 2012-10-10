@@ -134,6 +134,7 @@ def ireport():
                                                             # vars = {"ireport_id":"[id]"}),
                                                 # "_class" : "action-btn",
                                                 # "label" : "Assess"})
+       
         elif r.representation == "plain" and \
              r.method !="search":
             # Map Popups

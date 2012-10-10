@@ -360,6 +360,13 @@ class S3SupplyModel(S3Model):
             3:T("Stock"),
             4:"",
         }
+        #itemcategory = {
+        #    1:T("Moyens Roulants"),
+        #    2:T("Moyens Non Roulant"),
+        #    3:T("Moyens au Milieu Marin"),
+        #    4:T("Stock de Securité"),
+        #    5:"",
+        #}
         tablename = "supply_item"
         table = define_table(tablename,
                              Field("wilaya", "integer",
@@ -388,6 +395,12 @@ class S3SupplyModel(S3Model):
                                    writable=False,
                                    #notnull=True,
                                    default = "piece"),
+                             #Field("itemcategory", "integer",
+                             #      requires = IS_IN_SET(itemcategory, zero=None),
+                             #      default = 5,
+                             #      label = T("Item Category"),
+                             #      represent = lambda opt: \
+                             #                  itemcategory.get(opt, UNKNOWN_OPT)),
                              # Needed to auto-create a catalog_item
                              item_category_id("item_category_id",
                                               requires = IS_NULL_OR(IS_ONE_OF(db,

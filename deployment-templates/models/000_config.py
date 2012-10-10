@@ -163,7 +163,7 @@ deployment_settings.L10n.languages = OrderedDict([
 #    ("pt", "Português"),
 #    ("pt-br", "Português (Brasil)"),
 #    ("ru", "русский"),
-    ("es", "Español"),
+#    ("es", "Español"),
 #    ("tl", "Tagalog"),
 #    ("ur", "اردو"),
 #    ("vi", "Tiếng Việt"),
@@ -483,7 +483,7 @@ deployment_settings.modules = OrderedDict([
             name_nice = T("Map"),
             #description = "Situation Awareness & Geospatial Analysis",
             restricted = True,
-            module_type = 6,     # 6th item in the menu
+            module_type = None,     # 6th item in the menu
         )),
     ("pr", Storage(
             name_nice = T("Person Registry"),
@@ -496,20 +496,20 @@ deployment_settings.modules = OrderedDict([
             name_nice = T("Organizations"),
             #description = 'Lists "who is doing what & where". Allows relief agencies to coordinate their activities',
             restricted = True,
-            module_type = 10,
+            module_type = None,
         )),
     # All modules below here should be possible to disable safely
     ("hrm", Storage(
-            name_nice = T("Staff & Volunteers"),
+            name_nice = T("Staff & Volunteer"),
             #description = "Human Resources Management",
             restricted = True,
-            module_type = 3,
+            module_type = 4,
         )),
     ("cms", Storage(
           name_nice = T("Content Management"),
           #description = "Content Management System",
           restricted = True,
-          module_type = 10,
+          module_type = None,
       )),
     ("doc", Storage(
             name_nice = T("Documents"),
@@ -525,10 +525,10 @@ deployment_settings.modules = OrderedDict([
             module_type = None,
         )),
     ("supply", Storage(
-            name_nice = T("Supply Chain Management"),
+            name_nice = T("Supply Management"),
             #description = "Used within Inventory Management, Request Management and Asset Management",
             restricted = True,
-            module_type = 10, # Not displayed
+            module_type = 5, # Not displayed
         )),
     ("inv", Storage(
             name_nice = T("Warehouse"),
@@ -546,7 +546,7 @@ deployment_settings.modules = OrderedDict([
             name_nice = T("Assets"),
             #description = "Recording and Assigning Assets",
             restricted = True,
-            module_type = 4,
+            module_type = None,
         )),
     # Vehicle depends on Assets
     ("vehicle", Storage(
@@ -559,7 +559,7 @@ deployment_settings.modules = OrderedDict([
             name_nice = T("Requests"),
             #description = "Manage requests for supplies, assets, staff or other resources. Matches against Inventories where supplies are requested.",
             restricted = True,
-            module_type = 5,
+            module_type = None,
         )),
     ("project", Storage(
             name_nice = T("Projects"),
@@ -599,12 +599,12 @@ deployment_settings.modules = OrderedDict([
     #    )),
     # Assess currently depends on CR, IRS & Impact
     # Deprecated by Surveys module
-    #("assess", Storage(
-    #        name_nice = T("Assessments"),
-    #        #description = "Rapid Assessments & Flexible Impact Assessments",
-    #        restricted = True,
-    #        module_type = 10,
-    #    )),
+    ("assess", Storage(
+            name_nice = T("Assessments"),
+            #description = "Rapid Assessments & Flexible Impact Assessments",
+            restricted = True,
+            module_type = 3,
+        )),
     ("scenario", Storage(
             name_nice = T("Scenarios"),
             #description = "Define Scenarios for allocation of appropriate Resources (Human, Assets & Facilities).",

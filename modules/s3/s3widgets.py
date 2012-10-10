@@ -2337,7 +2337,7 @@ class S3AddPersonWidget(FormWidget):
         select_row = TR(TD(A(T("Select from registry"),
                              _href="#",
                              _id="select_from_registry",
-                             _class="action-btn"),
+                             _class="action-btn hide"),
                            A(T("Remove selection"),
                              _href="#",
                              _onclick="clear_person_form();",
