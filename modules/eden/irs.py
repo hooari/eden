@@ -258,10 +258,20 @@ class S3IRSModel(S3Model):
                                    #represent = lambda text: \
                                    #    s3_truncate(text, length=48, nice=True)
                                   ),
+<<<<<<< HEAD
 							 Field("catincident", "integer",
                                    requires = IS_IN_SET(irs_incident_type, zero=None),
                                    default = 14,
                                    label = T("Category"),
+=======
+                             Field("category", label = T("Category"),
+                                   # The full set available to Admins & Imports/Exports
+                                   # (users use the subset by over-riding this in the Controller)
+                                   requires = IS_NULL_OR(IS_IN_SET_LAZY(lambda: \
+                                       sort_dict_by_values(irs_incident_type_opts))),
+                                   # Use this instead if a simpler set of Options required
+                                   #requires = IS_NULL_OR(IS_IN_SET(irs_incident_type_opts)),
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
                                    represent = lambda opt: \
                                                irs_incident_type.get(opt, UNKNOWN_OPT)),
                              #Field("category", label = T("Category"),
@@ -468,7 +478,11 @@ class S3IRSModel(S3Model):
                                  "reporter",
                                  #"verified",
                                  #"message",
+<<<<<<< HEAD
 				                 "comments"
+=======
+				 #"comments"
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
                                 ])
 
         # Components

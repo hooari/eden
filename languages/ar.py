@@ -22,7 +22,11 @@
 '* Required Fields': '* البيانات المطلوبة',
 '-': '-',
 '0-15 minutes': '0-15 minutes',
+<<<<<<< HEAD
 '1 Assessment': 'الأضرارالمادية',
+=======
+'1 Assessment': 'تقييم الأضرار',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 '1 location, shorter time, can contain multiple Tasks': '1 location, shorter time, can contain multiple Tasks',
 '1-3 days': '1-3 days',
 '15-30 minutes': '15-30 minutes',
@@ -599,7 +603,10 @@
 'Base Location': 'موقع القاعدة',
 'Base Site Set': 'Base Site Set',
 'Base URL of the remote Sahana Eden instance including application path, e.g. http://www.example.org/eden': 'Base URL of the remote Sahana Eden instance including application path, e.g. http://www.example.org/eden',
+<<<<<<< HEAD
 'Baseline': 'Baseline',
+=======
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Baseline Data': 'Baseline Data',
 'Baseline Number of Beds': 'Baseline Number of Beds',
 'Baseline Type': 'Baseline Type',
@@ -1128,11 +1135,19 @@
 'Date of Report': 'Date of Report',
 'Date of Treatment': 'Date of Treatment',
 'Date/Time': 'التاريخ / الوقت',
+<<<<<<< HEAD
 'Date/Time of Alert': 'تاريخ / وقت الاشعار بالحادث',
 'Date/Time of Arival': 'تاريخ / وقت الوصول',
 'Date/Time of Disengagement': 'تاريخ / وقت انتهاء الخدمة',
 'Date/Time of Dispatch': 'Date/Time of Dispatch',
 'Date/Time of Engagement': 'تاريخ / وقت بدء العمل',
+=======
+'Date/Time of Alert': 'Date/Time of Alert',
+'Date/Time of Arival': 'Date/Time of Arival',
+'Date/Time of Disengagement': 'Date/Time of Disengagement',
+'Date/Time of Dispatch': 'Date/Time of Dispatch',
+'Date/Time of Engagement': 'Date/Time of Engagement',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Date/Time of Find': 'Date/Time of Find',
 'Date/Time of Request': 'تاريخ / وقت الطلب',
 'Date/Time when found': 'Date/Time when found',
@@ -2006,6 +2021,7 @@
 'Household kits received': 'أطقم المعدات المنزلية الواردة',
 'Household kits, source': 'Household kits, source',
 'How data shall be transferred': 'How data shall be transferred',
+<<<<<<< HEAD
 'How did boys 13-17yrs spend most of their time prior to the disaster?': 'How did boys 13-17yrs spend most of their time prior to the disaster?',
 'How did boys <12yrs spend most of their time prior to the disaster?': 'How did boys <12yrs spend most of their time prior to the disaster?',
 'How did boys girls 13-17yrs spend most of their time prior to the disaster?': 'How did boys girls 13-17yrs spend most of their time prior to the disaster?',
@@ -2019,6 +2035,11 @@
 'How local records shall be updated': 'How local records shall be updated',
 'How long does it take you to reach the available water resources? Specify the time required to go there and back, including queuing time, by foot.': 'How long does it take you to reach the available water resources? Specify the time required to go there and back, including queuing time, by foot.',
 'How long does it take you to walk to the health service?': 'How long does it take you to walk to the health service?',
+=======
+'How does it work?': 'How does it work?',
+'How is this person affected by the disaster? (Select all that apply)': 'كيف تضرر هذا الشخص من جراء الكارثة؟ (اختر كل ما ينطبق عليه)',
+'How local records shall be updated': 'How local records shall be updated',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'How long will the food last?': 'كم سيدوم الغذاء؟',
 'How long will this water resource last?': 'How long will this water resource last?',
 'How many Boys (0-17 yrs) are Dead due to the crisis': 'How many Boys (0-17 yrs) are Dead due to the crisis',
@@ -2198,7 +2219,11 @@
 'Incident': 'الحادث',
 'Incident Categories': 'أصناف الحوادث',
 'Incident Commander': 'Incident Commander',
+<<<<<<< HEAD
 'Incident Date/Time': 'تاريخ / وقت وقوع الحادث',
+=======
+'Incident Date/Time': 'Incident Date/Time',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Incident Report': 'Incident Report',
 'Incident Report Details': 'Incident Report Details',
 'Incident Report added': 'أُضيف تقرير الحادث',
@@ -2295,7 +2320,11 @@
 'Item Pack deleted': 'تم حذف عنصر المجموعة',
 'Item Pack updated': 'تحديث حزم المواد',
 'Item Packs': 'Item Packs',
+<<<<<<< HEAD
 'Item State': 'الحالة الحالية',
+=======
+'Item State': 'Item State',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Item added': 'Item added',
 'Item added to Inventory': 'Item added to Inventory',
 'Item added to shipment': 'Item added to shipment',
@@ -2306,7 +2335,11 @@
 'Item removed from Inventory': 'تم إزالة العنصر من الجرد',
 'Item updated': 'Item updated',
 'Items': 'العناصر',
+<<<<<<< HEAD
 'Items Management': 'تسيير الموارد المادية',
+=======
+'Items Management': 'تسيير الموارد',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Items in Category are Vehicles': 'Items in Category are Vehicles',
 'Items in Category can be Assets': 'Items in Category can be Assets',
 'JS Layer': 'JS Layer',
@@ -2503,8 +2536,13 @@
 'List Impact Types': 'قائمة أنواع التأثير',
 'List Impacts': 'قائمة التاثيرات',
 'List Import Files': 'List Import Files',
+<<<<<<< HEAD
 'List Incident Categories': 'قائمة أصناف الحوادث',
 'List Incident Reports': 'قائمة تقارير الحوادث',
+=======
+'List Incident Categories': 'List Incident Categories',
+'List Incident Reports': 'List Incident Reports',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'List Item Categories': 'List Item Categories',
 'List Item Packs': 'List Item Packs',
 'List Items': 'List Items',
@@ -2599,7 +2637,11 @@
 'List Warehouses': 'قائمة المستودعات',
 'List all': 'List all',
 'List available Scenarios': 'قائمة السيناريوهات المتاحة',
+<<<<<<< HEAD
 'List incidents': 'قائمة الحوادث',
+=======
+'List incidents': 'List incidents',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'List of Activity Types': 'List of Activity Types',
 'List of Affiliations': 'List of Affiliations',
 'List of CSV files': 'List of CSV files',
@@ -2710,7 +2752,11 @@
 'Manage requests of hospitals for assistance.': 'إدارة طلبات المستشفيات للحصول على المساعدة.',
 'Manage volunteers by capturing their skills, availability and allocation': 'إدارة المتطوعين من خلال التقاط مهاراتهم ، وتوافرهم وتوزيعهم',
 'Manager': 'مدير',
+<<<<<<< HEAD
 'Managing Incidents': 'تسيير الحوادث',
+=======
+'Managing Incidents': 'Managing Incidents',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Managing Office': 'المكتب الاداري',
 'Managing Victims': 'تسيير الضحايا',
 'Mandatory. In GeoServer, this is the Layer Name. Within the WFS getCapabilities, this is the FeatureType Name part after the colon(:).': 'Mandatory. In GeoServer, this is the Layer Name. Within the WFS getCapabilities, this is the FeatureType Name part after the colon(:).',
@@ -2931,10 +2977,15 @@
 'New Entry': 'New Entry',
 'New Event': 'New Event',
 'New Home': 'New Home',
+<<<<<<< HEAD
 'New Human Ressources': 'مورد بشري جديد',
 'New Incident Category': 'صنف جديد',
 'New Item': 'مورد مادي جديد',
 'New Item Category': 'صنف جديد',
+=======
+'New Incident Category': 'New Incident Category',
+'New Item Category': 'New Item Category',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'New Job Role': 'New Job Role',
 'New Location': 'New Location',
 'New Location Group': 'New Location Group',
@@ -2953,10 +3004,16 @@
 'New Ticket': 'New Ticket',
 'New Training Course': 'New Training Course',
 'New User': 'New User',
+<<<<<<< HEAD
 'New Victim': 'ضحية جديدة',
 'New Volunteer': 'New Volunteer',
 'New cases in the past 24h': 'New cases in the past 24h',
 'New incident': 'حادث جديد',
+=======
+'New Volunteer': 'New Volunteer',
+'New cases in the past 24h': 'New cases in the past 24h',
+'New incident': 'New incident',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'News': 'أخبار',
 'Next': 'Next',
 'Next View': 'Next View',
@@ -3229,7 +3286,11 @@
 'Nursery Beds': 'Nursery Beds',
 'Nutrition': 'التغذية',
 'Nutrition problems': 'مشاكل التغذية',
+<<<<<<< HEAD
 "N° piece d'identité": 'رقم بطاقة التعريف',
+=======
+"N° piece d'identité": "N° piece d'identité",
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'OK': 'موافق',
 'OR Reason': 'OR Reason',
 'OR Status': 'OR Status',
@@ -3296,7 +3357,11 @@
 'Organizations': 'المنظمات',
 'Origin': 'الأصل',
 'Origin of the separated children': 'Origin of the separated children',
+<<<<<<< HEAD
 'Original Province': 'الولاية اﻷصلية',
+=======
+'Original Province': 'Original Province',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Other': 'Other',
 'Other (describe)': 'Other (describe)',
 'Other (specify)': 'أخرى (حدد)',
@@ -3491,7 +3556,10 @@
 'Polygon reference of the rating unit': 'Polygon reference of the rating unit',
 'Poor': 'Poor',
 'Population': 'السكان',
+<<<<<<< HEAD
 'Population Report': 'Population Report',
+=======
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Population Statistic': 'Population Statistic',
 'Population Statistic Details': 'Population Statistic Details',
 'Population Statistic added': 'تمت أضافة إحصاء السكان',
@@ -3577,7 +3645,11 @@
 'Provide Metadata for your media files': 'توفر بيانات وصفية لملفات الوسائط',
 'Provide a password': 'Provide a password',
 'Provide an optional sketch of the entire building or damage points. Indicate damage points.': 'Provide an optional sketch of the entire building or damage points. Indicate damage points.',
+<<<<<<< HEAD
 'Province': 'الولاية',
+=======
+'Province': 'Province',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Proxy Server URL': 'Proxy Server URL',
 'Proxy-server': 'خادم الوكيل (بروكسي)',
 'Psychiatrics/Adult': 'طب الامراض العقلية/ الراشدين',
@@ -3711,7 +3783,10 @@
 'Religious Leader': 'Religious Leader',
 'Relizane': 'Relizane',
 'Relocate as instructed in the <instruction>': 'Relocate as instructed in the <instruction>',
+<<<<<<< HEAD
 'Remember me (for 30 days)': 'Remember me (for 30 days)',
+=======
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Remote Error': 'Remote Error',
 'Remove': 'أزال',
 'Remove Activity from this event': 'Remove Activity from this event',
@@ -4414,7 +4489,11 @@
 'Storm Surge': 'Storm Surge',
 'Stowaway': 'مهاجر غير شرعي',
 'Strategy': 'Strategy',
+<<<<<<< HEAD
 'Street Address': 'العنوان',
+=======
+'Street Address': 'Street Address',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Streetview Enabled?': 'Streetview Enabled?',
 'Strong Wind': 'ريح قوية',
 'Structural': 'بنائيّ',
@@ -4458,7 +4537,11 @@
 'Supplies': 'لوازم',
 'Supply Chain Management': 'الموارد المادية',
 'Supply Item Categories': 'Supply Item Categories',
+<<<<<<< HEAD
 'Supply Management': 'الموارد المادية',
+=======
+'Supply Management': 'تتسيير الموارد',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Support Request': 'Support Request',
 'Support Requests': 'طلبات الدعم',
 'Supports the decision making of large groups of Crisis Management Experts by helping the groups create ranked list.': 'Supports the decision making of large groups of Crisis Management Experts by helping the groups create ranked list.',
@@ -5057,12 +5140,15 @@
 'When a map is displayed that focuses on a collection of points, the map is zoomed to show just the region bounding the points.': 'When a map is displayed that focuses on a collection of points, the map is zoomed to show just the region bounding the points.',
 'When reports were entered': 'متى أدخلت التقارير',
 "When syncing data with others, conflicts happen in cases when two (or more) parties want to sync information which both of them have modified, i.e. conflicting information. Sync module tries to resolve such conflicts automatically but in some cases it can't. In those cases, it is up to you to resolve those conflicts manually, click on the link on the right to go to this page.": "When syncing data with others, conflicts happen in cases when two (or more) parties want to sync information which both of them have modified, i.e. conflicting information. Sync module tries to resolve such conflicts automatically but in some cases it can't. In those cases, it is up to you to resolve those conflicts manually, click on the link on the right to go to this page.",
+<<<<<<< HEAD
 'Where are the alternative places for studying?': 'Where are the alternative places for studying?',
 'Where are the separated children originally from?': 'Where are the separated children originally from?',
 'Where do the majority of people defecate?': 'Where do the majority of people defecate?',
 'Where have the children been sent?': 'Where have the children been sent?',
 'Where is solid waste disposed in the village/camp?': 'Where is solid waste disposed in the village/camp?',
 'Whether the resource should be tracked using S3Track rather than just using the Base Location': 'Whether the resource should be tracked using S3Track rather than just using the Base Location',
+=======
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Which methods to apply when importing data to the local repository': 'Which methods to apply when importing data to the local repository',
 'Whiskers': 'شوارب',
 'Who is doing What Where': 'Who is doing What Where',

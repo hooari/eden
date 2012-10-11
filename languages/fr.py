@@ -213,7 +213,11 @@
 'Add Item (s)': 'Ajouter un élément (s)',
 'Add Item Catalog': "Ajouter catalog d'élément",
 'Add Item Catalog Category': "Ajouter catégorie de la catalogue d'élément",
+<<<<<<< HEAD
 'Add Item Category': 'Ajouter une Catégorie',
+=======
+'Add Item Category': "Ajouter une Catégorie",
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Add Item Pack': "Ajouter paquet d'élément",
 'Add Item Sub-Category': "Ajouter une sous-catégorie d'élément",
 'Add Item to Catalog': 'Ajouter un élément au catalogue',
@@ -1422,11 +1426,15 @@
 'Damage': 'Dégat',
 'Damage Assessment': 'Nature de l`impact',
 'Damage Nature': "Nature de l'Impact",
+<<<<<<< HEAD
 'Damage added': 'Damage added',
 'Damage deleted': 'Damage deleted',
 'Damage updated': 'Damage updated',
 'Damages': 'Dégats',
 'Damages Details': 'Damages Details',
+=======
+'Damages': 'Dégats',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Dangerous Person': 'Personne Dangereux',
 'Dashboard': 'tableau de bord',
 'Data': 'Données',
@@ -1466,7 +1474,11 @@
 'Date/Time of Disengagement': 'Date de Desengagement',
 'Date/Time of Dispatch': 'Date/Time of Dispatch',
 'Date/Time of Engagement': "Date d'Engagement",
+<<<<<<< HEAD
 'Date/Time of Find': 'Date/Heure de découverte',
+=======
+'Date/Time of Find': 'Date/Heure de trouver',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Date/Time of Request': 'Date/heure de la Demande',
 'Date/Time of disappearance': 'Date/heure de disparition',
 'Date/Time when found': 'Date / heure de découverte',
@@ -2589,9 +2601,13 @@
 'Human Resource updated': 'Ressources humaines mises à jour',
 'Human Resources': 'Ressources humaines',
 'Human Resources Management': 'Gestion de Moyens humains',
+<<<<<<< HEAD
 'Human Ressources Details': 'Human Ressources Details',
 'Human Ressources Management': 'Gestion de Moyens Humains',
 'Human Ressources added': 'Human Ressources added',
+=======
+'Human Ressources Management': 'Gestion de Moyens Humains',
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Humanitarian NGO': 'ONG humanitaire',
 'Hurricane': 'Ouragan',
 'Hurricane Force Wind': 'Vent de force ouragan',
@@ -2886,7 +2902,11 @@
 'Item Catalog deleted': "Catalogue d'articles supprimé",
 'Item Catalog updated': "Catalogue d'articles mis à jour",
 'Item Catalogs': "Catalogues d'éléments",
+<<<<<<< HEAD
 'Item Categories': 'Catégories de Moyens Matériels',
+=======
+'Item Categories': "Catégories de Moyens Matériels",
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'Item Category': "Catégorie d'élément",
 'Item Category Details': "Détails de la catégorie d'élément",
 'Item Category added': "Catégorie d'élément ajoutée",
@@ -3715,7 +3735,11 @@
 'New Human Ressources': 'Nouveau Moyen Humain',
 'New Incident Category': "Nouvelle Catégorie d'Incidents",
 'New Item': 'Nouveau Moyen',
+<<<<<<< HEAD
 'New Item Category': 'Nouvelle Catégorie',
+=======
+'New Item Category': "Nouvelle Catégorie",
+>>>>>>> b565fe49cf79a3894a5111a116e10f2af61233bc
 'New Job Role': 'Nouveau rôle du travail',
 'New Location': 'Nouvel emplacement',
 'New Location Group': "Nouvel groupe d'emplacement",
