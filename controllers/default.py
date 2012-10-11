@@ -207,7 +207,7 @@ def index():
                                     )
                                  )
 
-    div_arrow = DIV(IMG(_src = "/%s/static/img/fleche2.png" % \
+    div_arrow = DIV(IMG(_src = "/%s/static/img/fleche1.png" % \
                                request.application),
                           _class = "div_arrow")
     div_arro = DIV(IMG(_src = "/%s/static/img/cvile.png" % \
